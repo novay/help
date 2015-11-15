@@ -7,18 +7,12 @@ class JenisKelaminController extends Controller
      function __construct(RepositorieInterface $repo) {
      	parent::__construct($repo,'JenisKelaminRequest');
      }
-     public function CreateOrUpdate(RepositorieInterface $model, JenisKelaminRequest $request, $from)
+     public function CreateOrUpdate(RepositorieInterface $model, JenisKelaminRequest $r, $from)
      {
-        if($model->save($request->all())){
-         return $this->routeAndSuccess($from);
-        }
-        return $this->routeBackWithError($form);
+       return $model->fill($r->all())->save() ? $this->routeAndSuccess($from) : $this->routeBackWithError($form);
      }
-     public function delete(RepositorieInterface $model)
+     public function destroy(RepositorieInterface $model)
      {
-         if( $model->detete() ){
-          return $this->routeAndSuccess($from);
-         }
-         return $this->routeBackWithError($form);
+        return  $model->delete() ? $this->routeAndSuccess('destroy') : $this->routeBackWithError('destroy');
      }
 }

@@ -8,49 +8,60 @@ trait ControllerPatch{
 	protected $moduleName;
 	private $repo;
 	private $request;
+	private $ajax = false;
 
 	function __construct(RepositorieInterface $repo, $nameReq) {
 		$this->repo = $repo;
-		$this->request = "App\\Http\\Request\\$nameReq";
+		$this->request = "App\\Http\\Requests\\$nameReq";
 		$this->prefix = str_replace('\\_', '.', strtolower(implode('_',array_slice(preg_split('/(?=[A-Z])/',str_replace(['App\\Http\\Controllers\\','Controller'], '', get_called_class())), 1))));
 		$this->moduleName = implode(' ',preg_split('/(?=[A-Z])/',str_replace(['App\\Http\\Controllers\\','Controller','\\'], '', get_called_class())));
 	}
+	private function setAjax($value = false)
+	{
+		$this->ajax = $value;
+		return $this;
+	}
 	public function store()
 	{
-		return $this->CreateOrUpdate($this->repo,App::make($this->request));
+		return $this->CreateOrUpdate($this->repo,\App::make($this->request),'store');
 	}
-	public function update()
+	public function update(RepositorieInterface $repo)
 	{
-		return $this->CreateOrUpdate($this->repo,App::make($this->request));
+		return $this->CreateOrUpdate($repo,\App::make($this->request),'update');
 	}
-	public function show()
+	public function show(RepositorieInterface $repo)
 	{
-		$data = $this->repo;
-		$pageTitle = "Deskripsi <b>{$this->moduleName}</b>";
+		$data = $repo;
+		$pageTitle = explode(' ', $this->moduleName)[0];
+		$pageDescription= implode(' ',array_slice(explode(' ',$this->moduleName), 1));
 		$documentTitle = "Deskripsi {$this->moduleName}";
-		return $this->view($this->prefix.'.show', compact('data','pageTitle'));
+		return $this->view($this->prefix.'.show', compact('data','pageTitle','pageDescription','documentTitle'));
 	}
 	public function index()
 	{
 		$lists = $this->repo->all();
-        $pageTitle =  "Keseluruhan <b>{$this->moduleName}</b>";
+        $pageTitle = explode(' ', $this->moduleName)[1];
+        $pageDescription= implode(' ',array_slice(explode(' ',$this->moduleName), 2));
         $documentTitle =  "Keseluruhan {$this->moduleName}";
-        return $this->view($this->uri('index'), compact('lists', 'pageTitle'));
+        return $this->view($this->uri('index'), compact('lists', 'pageTitle','pageDescription','documentTitle'));
 	}
-	public function edit()
+	public function edit(RepositorieInterface $repo)
 	{
-		$data = $this->repo;
-		$pageTitle = "Perbarui <b>{$this->moduleName}</b>";
+
+		$data = $repo;
+		$pageTitle = explode(' ', $this->moduleName)[0];
+		$pageDescription= implode(' ',array_slice(explode(' ',$this->moduleName), 1));
 		$documentTitle = "Perbarui {$this->moduleName}";
 		$form = "{$this->prefix}.form";
-		return $this->view("{$this->prefix}.edit", compact('data', 'pageTitle', 'form'));
+		return $this->view("{$this->prefix}.edit", compact('data', 'pageTitle','pageDescription','documentTitle', 'form'));
 	}
 	public function create()
 	{
-		$pageTitle = "Tambah <b>{$this->moduleName}</b>";
+		$pageTitle = explode(' ', $this->moduleName)[0];
+		$pageDescription= implode(' ',array_slice(explode(' ',$this->moduleName), 1));
 		$documentTitle = "Tambah {$this->moduleName}";
         $form = $this->prefix.'.form';
-        return $this->view($this->uri('create'), compact('pageTitle', 'form'));
+        return $this->view($this->uri('create'), compact('pageTitle','pageDescription','documentTitle', 'form'));
 	}
 
 	/**
@@ -78,14 +89,13 @@ trait ControllerPatch{
 	}
 	protected function view($nameview="", $data = null)
 	{
-		foreach ($this->uri() as $key => $value) {
-
-			$data[$key.'_url'] = route($value);
-		}
-	    if (\Request::ajax()) {
-	        if (isset($data)) {
-	            return  \Response::json($data);
-	        }
+		
+	    if (\Request::ajax() || $this->ajax) {
+	    	$view = (isset($data)) ? 
+	    							view($nameview, $data)->with($this->uri()): 
+	            					view($nameview)->with($this->uri());
+	        $view = $view->renderSections();
+	        return $this->ajax ? $view : \Response::json($view);
 	    } else {
 	        if (isset($data)) {
 	            return view($nameview, $data)->with($this->uri());

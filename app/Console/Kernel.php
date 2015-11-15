@@ -14,6 +14,10 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \App\Console\Commands\Inspire::class,
+        // \App\Console\Commands\CreateController::class,
+        // \App\Console\Commands\CreateModel::class,
+        // \App\Console\Commands\CreaeteModule::class,
+        // \App\Console\Commands\CreaeteView::class,
     ];
 
     /**

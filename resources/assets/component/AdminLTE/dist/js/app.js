@@ -80,9 +80,9 @@ $.AdminLTE.options = {
   boxWidgetOptions: {
     boxWidgetIcons: {
       //Collapse icon
-      collapse: 'fa-minus',
+      collapse: 'fa-compress',
       //Open icon
-      open: 'fa-plus',
+      open: 'fa-expand',
       //Remove icon
       remove: 'fa-times'
     },
@@ -242,10 +242,13 @@ function _init() {
       var _this = this;
       _this.fix();
       _this.fixSidebar();
+      _this.datatable();
       $(window, ".wrapper").resize(function () {
         _this.fix();
         _this.fixSidebar();
       });
+    },
+    datatable:function  () {
     },
     fix: function () {
       //Get window height and the wrapper height
@@ -551,6 +554,9 @@ function _init() {
       //Listen for remove event triggers
       $(_box).on('click', _this.selectors.remove, function (e) {
         e.preventDefault();
+        if($(this).hasClass('close-form') && typeof window.countAdd !== typeof undefined && window.countAdd !== false  && window.countAdd > 0 ){
+          window.countAdd = 0;
+        }
         _this.remove($(this));
       });
     },

@@ -2,18 +2,18 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-12">
-			<div class="card card-underline">
-				<div class="card-head">
-					<header>
-					</header>
-					<div class="tools">
-						<div class="btn-group">
-							<a href="{{ route($create) }}" class="btn btn-icon-toggle btn-refresh"><i class="md md-add"></i></a>
+			<div class="box box-default">
+				<div class="box-header with-border">
+					<h3 class="box-title">List Data</h3>
+					<div class="box-tools pull-right">
+							<a href="{{ route($create) }}" class="btn btn-primary btn-sm ajax-link"><i class="fa fa-plus"></i> Tambah</a>
+						<div class="btn-group ">
+							<button data-widget="collapse" class="btn btn-success btn-sm" type="button"><i class="fa fa-compress"></i></button>
 						</div>
 					</div>
 				</div>
-				<div class="card-body">
-					<table class="table no-margin datatable">
+				<div class="box-body">
+					<table class="table table-bordered table-striped no-margin datatable">
 						<thead>
 							<tr>
 								<th class="col-xs-1">No.</th>
@@ -22,16 +22,18 @@
 						</thead>
 						<tbody>
 							<?php $x=1; ?>
-							@foreach ($lists as $eskul)
+							@foreach ($lists as $list)
 								<tr>
 									<td>{{$x++}}</td>
 									<td>
-										<span>{{$eskul->title}}</span>	
+										<span>{{$list->title}}</span>	
 										<div class="pull-right">
-											  {!! Form::open(['route'=>[$destroy,$eskul->id], 'method'=>'DELETE','class'=>'no-margin']) !!}
-												  	{!! link_to_route($show,'Detail',$eskul->id,['class'=>'btn btn-warning btn-raised btn-sm']) !!}
-												  	{!! link_to_route($edit,'Edit',$eskul->id,['class'=>'btn btn-info btn-raised btn-sm']) !!}
-												  	{!! Form::button('Delete',['class'=>'btn btn-danger btn-raised btn-sm','type'=>'submit']) !!}
+											  {!! Form::open(['route'=>[$destroy,$list->id], 'method'=>'DELETE','class'=>'no-margin form-ajax']) !!}
+											  		<div class="btn-group">
+													  	<a href="{{ route($show,$list->id) }}" class="btn btn-flat btn-warning show-link ajax-link btn-sm"><i class="fa fa-paste"></i> Lihat</a>
+													  	<a href="{{ route($edit,$list->id) }}" class="btn btn-flat ajax-link btn-info btn-sm"><i class="fa fa-pencil"></i> Ubah</a>
+													  	<button class="btn btn-danger btn-flat btn-sm" type="submit"><i class="fa fa-eraser"></i> Hapus</button>
+											  		</div>
 											  {!! Form::close() !!}
 										</div>
 									</td>

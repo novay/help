@@ -33,7 +33,7 @@
 @red: #BD362F;
 @blue: #2F96B4;
 @orange: #F89406;
-@default-container-opacity: .8;
+@default-container-opacity: .9;
 
 // Styles
 .toast-title {
@@ -111,10 +111,16 @@ button.toast-close-button {
 	right: 0;
 	width: 100%;
 }
-
 .toast-top-left {
-	top: 12px;
-	left: 12px;
+	top: 0;
+	left: 50%;
+	bottom:10px;
+}
+@media(min-width:768px){
+	.toast-top-left {
+		top: 112px;
+		left: 12px;
+	}	
 }
 
 .toast-top-right {
@@ -154,13 +160,13 @@ button.toast-close-button {
 		.borderRadius(3px 3px 3px 3px);
 		background-position: 15px center;
 		background-repeat: no-repeat;
-		.boxShadow(0 0 12px @grey);
+		// .boxShadow(0 0 12px @grey);
 		color: @white;
 		.opacity(@default-container-opacity);
 	}
 
 	> :hover {
-		.boxShadow(0 0 12px @black);
+		// .boxShadow(0 0 12px @black);
 		.opacity(1);
 		cursor: pointer;
 	}
@@ -230,7 +236,6 @@ button.toast-close-button {
 
 @media all and (max-width: 240px) {
 	#toast-container {
-
 		> div {
 			padding: 8px 8px 8px 50px;
 			width: 11em;

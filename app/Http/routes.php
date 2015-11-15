@@ -13,6 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
+    // $m = new App\Repositories\Eloquent\JenisKelamin;
 });
 Route::group(['prefix'=>'data','namespace'=>'Data'],function ()
 {

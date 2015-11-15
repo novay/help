@@ -1,0 +1,39 @@
+{
+  "name": "web kodir",
+  "authors": [
+    "triasbrata <triasbrata@gmail.com>"
+  ],
+  "description": "web application",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "nothing"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "component",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "AdminLTE": "adminlte#~2.3.2",
+    "Ionicons": "ionicons#~2.0.1",
+    "font-awesome": "fontawesome#~4.4.0",
+    "toastr": "~2.1.2",
+    "bootstrap": "~3.3.5",
+    "font-source-sans-pro": "~0.1.0",
+    "jquery": "~2.1.4",
+    "morris.js": "morrisjs#~0.5.1",
+    "iCheck": "icheck#~1.0.2",
+    "fastclick": "~1.0.6",
+    "slimScroll": "~1.3.6",
+    "datatables": "~1.10.10",
+    "animate.css": "~3.4.0"
+  }
+}

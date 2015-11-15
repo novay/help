@@ -36,10 +36,10 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Preference</a>
+                                <a href="#" class="btn btn-default btn-flat"><i class="fa fa-cogs"></i> Preference</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{{ url('sesi/logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="{{ url('sesi/logout') }}" class="btn btn-default btn-flat"><i class="fa fa-power-off"></i> Sign out</a>
                             </div>
                         </li>
                     </ul>

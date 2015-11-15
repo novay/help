@@ -143,6 +143,7 @@ return [
         Illuminate\Html\HtmlServiceProvider::Class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+        App\Providers\GeneratorServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositorieBindingServiceProvider::class,

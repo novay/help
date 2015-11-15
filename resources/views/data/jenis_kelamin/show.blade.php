@@ -1,42 +1,22 @@
 @extends('admin_template')
 @section('content')
-<div class="card card-underline">
-	<div class="card-head">
-		<header>{!! $namaForm !!}</header>
-		<div class="tools">
+<div class="box box-warning" id="box-ajax">
+	<div class="box-header">
+		<h3 class="box-title">{!! $documentTitle !!}</h3>
+		<div class="box-tools">
 			<div class="btn-group">
-				<a href="{{ route($index) }}" class="btn btn-icon-toggle"><i class="md md-undo"></i></a>
+				<button data-widget="remove" class="btn btn-danger btn-sm close-form " type="button"><i class="fa fa-close"></i></button>
 			</div>
 		</div>
 	</div>
-	<div class="card-body">
-		<div class="col-md-6">
-			<ul class="list divider-full-bleed">
-
-				<li class="tile">
-					<div class="tile-content ink-reaction">
-						<div class="tile-text">
-							<span>Nama Ekstra Kurikuler</span>
-							<small>{{$data->label}}</small>
-						</div>
-					</div>
-				</li>
-				<li class="tile">
-					<div class="tile-content ink-reaction">
-						<div class="tile-text">
-							<span>Data Created_at</span>
-							<small>{{$data->created_at}}</small>
-						</div>
-					</div>
-				</li>
-				
-			</ul>
-		</div>
-
-		
-		
-		</div>
-
+	<div class="box-body">
+		<table class="table table-striped">
+			<tr>
+				<td class="col-xs-4">Jenis Kelamin</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->title }}</td>
+			</tr>
+		</table>		
 	</div>
 </div>
 @stop

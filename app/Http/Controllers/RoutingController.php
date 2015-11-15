@@ -6,7 +6,7 @@ trait RoutingController{
 	 */
 	public function toIndex()
 	{
-	    return redirect()->route($this->nameFix('index'));
+	    return redirect()->route($this->uri('index'));
 	}
 	/**
 	 * mengubah kata dari method pada cotroller
@@ -37,7 +37,10 @@ trait RoutingController{
     {
         $message = "{$this->moduleName} berhasil ";
         $message.= $this->routeMessage($from);
-        return  $this->toIndex()->withSuccess([$message]);
+        $content = $this->setAjax(true)->index()['content'];
+        return \Request::ajax()?
+             \Response::json(compact('message','content')):
+             $this->toIndex()->withSuccess([$message]);
     }
     /**
      * ruting kembali ke form dan bersama inputan yang 
@@ -49,6 +52,9 @@ trait RoutingController{
     {
         $message = "{$this->moduleName} gagal ";
         $message.= $this->routeMessage($from);
-        return redirect()->back()->withInput()->withErrors([$message]);
+        $errors = \Session::has('errors') ? \Session::get('errors') : 'undefined';
+        return \Request::ajax() ?
+            \Response::json(compact('errors','message'),422):
+            redirect()->back()->withInput()->withErrors([$message]);
     }
 }

@@ -22,7 +22,13 @@ class JenisKelaminRequest extends Request
     public function rules()
     {
         return [
-            //
+            'title'=>'required'
+        ];
+    }
+    public function messages()
+    {
+        return[
+            'title.required'=> 'Field jenis kelamin tidak boleh kosong'
         ];
     }
 }
