@@ -6,7 +6,7 @@
     <section class="sidebar">
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            {!! $menu->make($menu->lists('data'),'data') !!}
+            {!! $menu->make($menu->lists('admin'),'admin') !!}
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

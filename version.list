@@ -4,7 +4,7 @@ Beta - 1.0.0
 	- upload ke heroku
 	- atur .env
 	- atur Procile
-Beta - 1.0.1 ()
+Beta - 1.0.1
 	- add console command 'create:controeller'
 	- add console command 'create:view'
 	- add console command 'create:model'
@@ -17,4 +17,13 @@ Beta - 1.0.1 ()
 	- generate module Lembaga Akreditasi
 	- generate module Niai Akreditasi
 	- generate module Provinsi
-
+Beta - 1.0.2
+	- routing module Izin Sekolah
+	- routing module Kabupaten
+	- routing module Kecamatan
+	- routing module Kelurahan
+	- routing module Lembaga Akreditasi
+	- routing module Niai Akreditasi
+	- routing module Provinsi
+	- make menu for Izin Sekolah Kabupaten Kecamatan Kelurahan Lembaga Akreditasi Niai Akreditasi Provinsi
+	-

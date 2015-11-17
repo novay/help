@@ -15,9 +15,74 @@ Route::get('/', function () {
     return view('welcome');
     // $m = new App\Repositories\Eloquent\JenisKelamin;
 });
-Route::group(['prefix'=>'data','namespace'=>'Data'],function ()
+Route::group(['prefix'=>'admin','namespace'=>'Admin'],function ()
 {
-	Route::resources([
-		'jenis_kelamin' => 'JenisKelaminController',
-	]);
+	Route::group(['prefix'=>'data','namespace'=>'Data'],function ()
+	{
+		
+		Route::group(['prefix'=>'tambahan','namespace'=>'Tambahan'],function (){
+			Route::resources([
+				'agama' => 'AgamaController',
+				'akses_inet' => 'AksesInternetController',
+				'jenis_kelamin' => 'JenisKelaminController',
+				'suplai_air' => 'SuplaiAirController',
+			]);
+		});
+		Route::group(['prefix'=>'administrasi/sekolah','namespace'=>'Administrasi\Sekolah'],function (){
+			Route::resources([
+				'izin_sekolah' => 'IzinController',
+				'status_sekolah' => 'StatusSekolahController',
+				'bentuk_pendidikan' => 'BentukPendidikanController',
+			]);
+		});
+		Route::group(['prefix'=>'akreditasi','namespace'=>'Akreditasi'],function (){
+			Route::resources([
+				'lembaga_akreditasi' => 'LembagaController',
+				'nilai_akreditasi' => 'NilaiController',
+			]);
+		});
+		Route::group(['prefix'=>'region','namespace'=>'Region'],function ()
+		{
+			Route::resources([
+				'provinsi'=>'ProvinsiController',
+				'kabupaten'=>'KabupatenController',
+				'kecamatan'=>'KecamatanController',
+				'kelurahan'=>'KelurahanController',
+				'kategori_wilayah'=>'KelurahanController',
+				]);
+		});
+		Route::group(['prefix'=>'penyelenggaraan','namespace'=>'Penyelenggaraan'],function ()
+		{
+			Route::resources([
+				'semester'=>'SemesterController',
+				'tahun_ajaran'=>'TahunAjaranController',
+				'waktu_penyelenggaraan'=>'WaktuPenyelengaraanController',
+				]);
+		});
+	});
+	Route::resource('yayasan','YayasanController');
+	Route::group(['prefix'=>'sekolah','namespace'=>'Sekolah'],function ()
+	{
+		Route::group(['prefix'=>'program','namespace'=>'Program'],function ()
+		{
+			Route::resources([
+				'inkuisi'=>'InkuisiController',
+				'layanan_khsusus'=>'LayananKhususController'
+			]);
+		});	
+		Route::get('massasigment',['as'=>'massasigment','uses'=>function ()
+				{
+					return "you found me :V";
+				}]);
+		Route::resources([
+			'akreditasi' => 'AkreditasiController',
+			'perizinan' => 'IzinController',
+			'lokasi' => 'LokasiSekolahController',
+			'periodik' => 'PeriodikController',
+			'sanitasi' => 'SanitasiController',
+			'sertifikasi' => 'SertifikasiController',
+			'siswa' => 'SiswaController',
+			'tambahan' => 'TambahanController',
+		]);
+	});
 });

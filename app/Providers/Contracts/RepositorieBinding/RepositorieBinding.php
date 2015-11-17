@@ -15,6 +15,7 @@ class RepositorieBinding
 
 	public function bind($controller,$repositories,$wild_card)
 	{
+		$controller = str_replace('//', '\\', $controller);
 		$controller = $this->controllerNamespace.'\\'.$controller;
 		$repositories = $this->repositorieNamespace.'\\'.$this->repo.'\\'.$repositories;
 		
