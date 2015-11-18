@@ -33,10 +33,13 @@
     "scripts": {
         "post-install-cmd": [
             "php artisan clear-compiled",
-            "php artisan optimize"
+            "php artisan optimize",
+            "php -r \"copy('.env.example', '.env');\""
+
         ],
         "pre-update-cmd": [
             "php artisan clear-compiled"
+            "php -r \"copy('.env.example', '.env');\""
         ],
         "post-update-cmd": [
             "php artisan optimize"
