@@ -17,8 +17,9 @@
 	            $("#progress-download").fadeOut(800, function() {
 	            	if($('#box-ajax').length > 0){
 		        			$('#box-ajax').slideUp(600,function  (e) {
+		        				$('#ajaxField').prepend($(data.content).css('display', 'none'));
 		        				$(e).remove();
-		        				$('#ajaxField').prepend(data.content).css('display', 'none').slideDown(600);
+		        				$(data.content).slideDown(600);
 								__bootsrapingAllFunction();
 		        			})
 		        	}else{
@@ -27,7 +28,7 @@
 		        	}
 	            });
 	          },
-	          error:function  () {
+	          error:function  (e) {
 	            $("#progress-download").fadeOut(800, function() {
 				  toastr.options = window.toastr.options;
 	              toastr.error("Data tidak bisa ditemukan!", '');
@@ -56,6 +57,7 @@
 						}else{
 							$('#ajaxField').html(msg.content);
 						}
+						console.log('call __bootsrapingAllFunction();')
 						__bootsrapingAllFunction();
 					},
 					error:function (e) {
@@ -64,8 +66,8 @@
 							if(e.responseJSON.message !== undefined){
 								toastr.error(e.responseJSON.message,'');
 							}
-							if( e.responseJSON.error !== 'undefined' && e.responseJSON.error !== undefined ){
-								$.each(e.responseJSON.error, function(index, val) {
+							if( ! $.isEmptyObject(e.responseJSON.errors)){
+								$.each(e.responseJSON.errors, function(index, val) {
 									setTimeout(function  () {
 									 toastr.error(val,'');
 									},x*500);
@@ -78,7 +80,6 @@
 								 toastr.error(val,'');
 								},x*500);
 								x++;
-
 							});
 
 						}

@@ -1,7 +1,9 @@
 @extends('admin_template')
 @section('content')
+	  <div id="box-ajax">
 	  {!! Form::model($data,['route'=>[$update,$data->id], 'method'=>'PATCH','class'=>'form form-ajax']) !!}
-		<div class="box box-info" id="box-ajax">
+<div class="box box-info">
+		
 			<div class="box-header">
 				<h3 class="box-title">{!! $documentTitle !!}</h3>
 				<div class="box-tools">
@@ -22,4 +24,5 @@
 			</div>
 		</div>
 	  {!! Form::close() !!}
+</div>
 @stop

@@ -1,7 +1,8 @@
 @extends('admin_template')
 @section('content')
+	  <div id="box-ajax">
 	  {!! Form::open(['route'=>$store, 'method'=>'POST','class'=>'form form-ajax']) !!}
-		<div class="box box-primary" id="box-ajax">
+<div class="box box-primary">
 			<div class="box-header">
 				<h3 class="box-title">{!! $documentTitle !!}</h3>
 				<div class="box-tools">
@@ -22,4 +23,5 @@
 			</div>
 		</div>
 	  {!! Form::close() !!}
+</div>
 @stop

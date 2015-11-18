@@ -13,7 +13,7 @@ class BentukPendidikanRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class BentukPendidikanRequest extends Request
     public function rules()
     {
         return [
-            //
+            'title'=>'required|min:2'
         ];
+    }
+    public function attributes()
+    {
+        return ['title'=>'Bentuk Pendidikan'];
     }
 }

@@ -1,2 +1,2 @@
 {!! Form::label('title','Agama'); !!}
-{!! Form::text('title',null,['class'=>'form-control']) !!}
+{!! Form::text('title',null,['class'=>'form-control','id'=>'title']) !!}

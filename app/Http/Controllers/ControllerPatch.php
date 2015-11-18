@@ -16,7 +16,7 @@ trait ControllerPatch{
 		if(is_null($this->prefix ))
 		$this->prefix = str_replace('\\_', '.', strtolower(implode('_',array_slice(preg_split('/(?=[A-Z])/',str_replace(['App\\Http\\Controllers\\','Controller'], '', get_called_class())), 1))));
 		if(is_null($this->moduleName ))
-		$this->moduleName = implode(' ',preg_split('/(?=[A-Z])/',str_replace(['App\\Http\\Controllers\\','Controller','\\'], '', get_called_class())));
+		$this->moduleName = implode(' ',preg_split('/(?=[A-Z])/',str_replace(['App\\Http\\Controllers\\','Admin\\','Data\\','Controller','\\'], '', get_called_class())));
 	}
 	private function setAjax($value = false)
 	{
@@ -42,8 +42,10 @@ trait ControllerPatch{
 	public function index()
 	{
 		$lists = $this->repo->all();
-        $pageTitle = explode(' ', $this->moduleName)[1];
-        $pageDescription= implode(' ',array_slice(explode(' ',$this->moduleName), 2));
+		$title = explode(' ', $this->moduleName);
+		$midTitle = floor(count($title)/2)+1 < count($title) ?  floor(count($title)/2)+1 : floor(count($title)/2);
+        $pageTitle = implode(' ',array_slice($title, 0,$midTitle));
+        $pageDescription= implode(' ',array_slice($title,$midTitle));
         $documentTitle =  "Keseluruhan {$this->moduleName}";
         return $this->view($this->uri('index'), compact('lists', 'pageTitle','pageDescription','documentTitle'));
 	}

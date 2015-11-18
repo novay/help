@@ -13,7 +13,7 @@ class SertifikatIsoRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class SertifikatIsoRequest extends Request
     public function rules()
     {
         return [
-            //
+            'title'=>'required|min:3'
         ];
     }
+    public function attributes()
+    {
+        return['title'=>'Sertifikat Iso'];
+    }
 }
+ 

@@ -17,7 +17,7 @@
 						<thead>
 							<tr>
 								<th class="col-xs-1">No.</th>
-								<th>Header text</th>
+								<th>Status Kepemilikan</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -26,7 +26,7 @@
 								<tr>
 									<td>{{$x++}}</td>
 									<td>
-										<span>list item</span>	
+										<span>{{ $list->title }}</span>	
 										<div class="pull-right">
 											  {!! Form::open(['route'=>[$destroy,$list->id], 'method'=>'DELETE','class'=>'no-margin form-ajax']) !!}
 											  		<div class="btn-group">
@@ -35,6 +35,7 @@
 													  	<button class="btn btn-danger btn-flat btn-sm" type="submit"><i class="fa fa-eraser"></i> Hapus</button>
 											  		</div>
 											  {!! Form::close() !!}
+</div>
 										</div>
 									</td>
 								</tr>
