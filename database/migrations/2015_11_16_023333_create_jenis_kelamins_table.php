@@ -14,6 +14,7 @@ class CreateJenisKelaminsTable extends Migration
     {
         Schema::create('jenis_kelamins', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title',50);
             $table->timestamps();
         });
     }

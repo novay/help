@@ -19,8 +19,9 @@ class MenuFetcher
 						['route'=>'administrasi.sekolah.','name'=>'Administrasi Sekolah','inGroup'=>
 							[
 								['route'=>'bentuk_pendidikan.index','name'=>'Bentuk Pendidikan'],
-								['route'=>'izin_sekolah.index','name'=>'Izin Sekolah'],
 								['route'=>'status_sekolah.index','name'=>'Status Sekolah'],
+								['route'=>'status_kepemilikan.index','name'=>'Kepemilikan Sekolah'],
+								['route'=>'sertifikat_iso.index','name'=>'Sertifikat Iso'],
 								
 							],
 						],
@@ -28,6 +29,12 @@ class MenuFetcher
 							[
 								['route'=>'lembaga_akreditasi.index','name'=>'Lembaga Akreditasi'],
 								['route'=>'nilai_akreditasi.index','name'=>'Nilai Akreditasi'],
+							],
+						],
+						['route'=>'program.','name'=>'Program','inGroup'=>
+							[
+								['route'=>'data_layanan_khsusus.index','name'=>'Lembaga Akreditasi'],
+								['route'=>'data_kebutuhan_khusus.index','name'=>'Nilai Akreditasi'],
 							],
 						],
 						['route'=>'region.','name'=>'Region','inGroup'=>
@@ -44,6 +51,7 @@ class MenuFetcher
 								['route'=>'tahun_ajaran.index','name'=>'Tahun Ajaran'],
 								['route'=>'semester.index','name'=>'Semester'],
 								['route'=>'waktu_penyelenggaraan.index','name'=>'Waktu Penyelenggaraan'],
+								['route'=>'waktu_penyelenggaraan.index','name'=>'Waktu Penyelenggaraan'],
 							],
 						],
 						['route'=>'tambahan.','name'=>'Data Tambahan','inGroup'=>
@@ -52,6 +60,7 @@ class MenuFetcher
 								['route'=>'akses_inet.index','name'=>'Akses Internet'],								
 								['route'=>'jenis_kelamin.index','name'=>'Jenis Kelamin'],								
 								['route'=>'suplai_air.index','name'=>'Suplai Air'],								
+								['route'=>'sumber_listrik.index','name'=>'Suplai Listrik'],								
 							],
 						],
 					],

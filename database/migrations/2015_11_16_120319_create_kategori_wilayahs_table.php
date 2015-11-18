@@ -14,6 +14,7 @@ class CreateKategoriWilayahsTable extends Migration
     {
         Schema::create('kategori_wilayahs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title',50);
             $table->timestamps();
         });
     }

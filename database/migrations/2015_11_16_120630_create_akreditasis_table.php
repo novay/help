@@ -14,6 +14,13 @@ class CreateAkreditasisTable extends Migration
     {
         Schema::create('akreditasis', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('sekolah_id');
+            $table->string('no_sk')->unique('sk');
+            $table->integer('nilai_id');
+            $table->string('tmt');
+            $table->date('tanggal');
+            $table->integer('lembaga_id');
+            $table->string('file',40);
             $table->timestamps();
         });
     }

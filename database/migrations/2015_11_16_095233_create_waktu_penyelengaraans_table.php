@@ -14,6 +14,7 @@ class CreateWaktuPenyelengaraansTable extends Migration
     {
         Schema::create('waktu_penyelengaraans', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title',50);
             $table->timestamps();
         });
     }

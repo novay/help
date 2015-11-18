@@ -14,6 +14,19 @@ class CreateSanitasisTable extends Migration
     {
         Schema::create('sanitasis', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('sekolah_id');
+            $table->string('title',50);
+            $table->integer('tahun_ajaran_id');
+            $table->integer('semester_id');
+            $table->enum('ketersedian_air',['ya','tidak']);
+            $table->integer('suplai_air_id');
+            $table->enum('kecukupan_air',['cukup','kurang','tidak ada']);
+            $table->enum('proses_air',['ya','tidak']);
+            $table->enum('air_minum',['ya','tidak']);
+            $table->enum('membawa_air',['ya','tidak']);
+            $table->integer('toilet_kebutuhan_khsusu');
+            $table->integer('toilet_siswa_kecil');
+            $table->integer('cuci_tangan');
             $table->timestamps();
         });
     }

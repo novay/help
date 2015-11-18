@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDataPeriodiksTable extends Migration
+class CreateDataLayananKhususesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,9 @@ class CreateDataPeriodiksTable extends Migration
      */
     public function up()
     {
-        Schema::create('data_periodiks', function (Blueprint $table) {
+        Schema::create('data_layanan_khususes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title',50);
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ class CreateDataPeriodiksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('data_periodiks');
+        Schema::drop('data_layanan_khususes');
     }
 }

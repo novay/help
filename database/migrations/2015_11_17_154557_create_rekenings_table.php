@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIzinsTable extends Migration
+class CreateRekeningsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,13 @@ class CreateIzinsTable extends Migration
      */
     public function up()
     {
-        Schema::create('izins', function (Blueprint $table) {
+        Schema::create('rekenings', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('sekolah_id');
+            $table->string("nama_bank",50);
+            $table->string("cabang",50);
+            $table->string("nama",30);
+            $table->string("file",50);
             $table->timestamps();
         });
     }
@@ -25,6 +30,6 @@ class CreateIzinsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('izins');
+        Schema::drop('rekenings');
     }
 }

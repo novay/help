@@ -13,7 +13,9 @@ class CreateKabupatensTable extends Migration
     public function up()
     {
         Schema::create('kabupatens', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('id',4)->primary();
+            $table->string('provinsi_id',2);
+            $table->string('title',35);
             $table->timestamps();
         });
     }

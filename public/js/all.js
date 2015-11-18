@@ -26237,10 +26237,9 @@ function _init() {
 	          success:function  (data) {
 	            $("#progress-download").fadeOut(800, function() {
 	            	if($('#box-ajax').length > 0){
-		        			console.log('msg');
-		        			$('#box-ajax').slideUp(400,function  (e) {
+		        			$('#box-ajax').slideUp(600,function  (e) {
 		        				$(e).remove();
-		        				$('#ajaxField').prepend(data.content).css('display', 'none').slideDown(400);
+		        				$('#ajaxField').prepend(data.content).css('display', 'none').slideDown(600);
 								__bootsrapingAllFunction();
 		        			})
 		        	}else{

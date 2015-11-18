@@ -13,7 +13,9 @@ trait ControllerPatch{
 	function __construct(RepositorieInterface $repo, $nameReq) {
 		$this->repo = $repo;
 		$this->request = "App\\Http\\Requests\\$nameReq";
+		if(is_null($this->prefix ))
 		$this->prefix = str_replace('\\_', '.', strtolower(implode('_',array_slice(preg_split('/(?=[A-Z])/',str_replace(['App\\Http\\Controllers\\','Controller'], '', get_called_class())), 1))));
+		if(is_null($this->moduleName ))
 		$this->moduleName = implode(' ',preg_split('/(?=[A-Z])/',str_replace(['App\\Http\\Controllers\\','Controller','\\'], '', get_called_class())));
 	}
 	private function setAjax($value = false)

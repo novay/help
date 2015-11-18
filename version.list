@@ -26,4 +26,7 @@ Beta - 1.0.2
 	- routing module Niai Akreditasi
 	- routing module Provinsi
 	- make menu for Izin Sekolah Kabupaten Kecamatan Kelurahan Lembaga Akreditasi Niai Akreditasi Provinsi
-	-
+Beta - 1.0.3
+	- add migration
+	- add all module
+	- make pivot table

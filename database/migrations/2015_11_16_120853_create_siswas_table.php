@@ -14,6 +14,10 @@ class CreateSiswasTable extends Migration
     {
         Schema::create('siswas', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('sekolah_id');
+            $table->integer('tahun_ajaran_id');
+            $table->integer('semester_id');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }

@@ -14,6 +14,7 @@ class CreateProgramInkuisisTable extends Migration
     {
         Schema::create('program_inkuisis', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title',50);
             $table->timestamps();
         });
     }

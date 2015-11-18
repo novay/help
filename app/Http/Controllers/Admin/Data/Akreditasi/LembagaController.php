@@ -9,6 +9,7 @@ use App\Http\Requests\LembagaRequest;
 
 class LembagaController extends Controller
 {
+     protected $prefix = "admin.data.akreditasi.lembaga_akreditasi";
      function __construct(RepositorieInterface $repo) {
      	parent::__construct($repo,'LembagaRequest');
      }

@@ -13,7 +13,9 @@ class CreateKelurahansTable extends Migration
     public function up()
     {
         Schema::create('kelurahans', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('id',10)->primary();
+            $table->string('kecamatan_id',7);
+            $table->string('title',35);
             $table->timestamps();
         });
     }

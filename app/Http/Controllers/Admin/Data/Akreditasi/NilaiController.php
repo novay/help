@@ -9,6 +9,7 @@ use App\Http\Requests\NilaiRequest;
 
 class NilaiController extends Controller
 {
+     protected $prefix = "admin.data.akreditasi.nilai_akreditasi";
      function __construct(RepositorieInterface $repo) {
      	parent::__construct($repo,'NilaiRequest');
      }

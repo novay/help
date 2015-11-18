@@ -5,20 +5,20 @@ namespace App\Http\Controllers\Admin\Sekolah;
 use App\Http\Controllers\Controller;
 use App\Repositories\RepositorieInterface;
 
-use App\Http\Requests\IzinRequest;
+use App\Http\Requests\PerizinanRequest;
 
-class IzinController extends Controller
+class PerizinanController extends Controller
 {
      function __construct(RepositorieInterface $repo) {
-     	parent::__construct($repo,'IzinRequest');
+     	parent::__construct($repo,'PerizinanRequest');
      }
      /**
       * code for create and update data in data store
       * @param RepositorieInterface $model 
-      * @param IzinRequest         $r     RequestHandler
+      * @param PerizinanRequest         $r     RequestHandler
       * @param string               $from  store|update
       */
-     public function CreateOrUpdate(RepositorieInterface $model, IzinRequest $r, $from)
+     public function CreateOrUpdate(RepositorieInterface $model, PerizinanRequest $r, $from)
      {
         return $model->fill($r->all())->save() ? $this->routeAndSuccess($from) : $this->routeBackWithError($form);
      }

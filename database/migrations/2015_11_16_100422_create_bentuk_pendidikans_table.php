@@ -14,6 +14,7 @@ class CreateBentukPendidikansTable extends Migration
     {
         Schema::create('bentuk_pendidikans', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title',50);
             $table->timestamps();
         });
     }

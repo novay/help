@@ -12,9 +12,19 @@
 	<div class="box-body">
 		<table class="table table-striped">
 			<tr>
-				<td class="col-xs-4">item name</td>
+				<td class="col-xs-4">Akses Internet</td>
 				<td class="col-xs-1">:</td>
-				<td>item value</td>
+				<td>{{ $data->title }}</td>
+			</tr>
+			<tr>
+				<td class="col-xs-4">Dibuat tanggal</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->create_at }}</td>
+			</tr>
+			<tr>
+				<td class="col-xs-4">Terakhir diperbarui</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->update_at }}</td>
 			</tr>
 		</table>		
 	</div>

@@ -14,6 +14,14 @@ class CreatePeriodiksTable extends Migration
     {
         Schema::create('periodiks', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('sekolah_id');
+            $table->integer('tahun_ajaran_id');
+            $table->integer('semester_id');
+            $table->integer('waktu_penyelenggaraan_id');
+            $table->enum('bosna',['ya','tidak']);
+            $table->enum('bosda',['ya','tidak']);
+            $table->integer('sumber_listrik_id');
+            $table->integer('daya');
             $table->timestamps();
         });
     }

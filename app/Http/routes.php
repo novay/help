@@ -26,13 +26,21 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function ()
 				'akses_inet' => 'AksesInternetController',
 				'jenis_kelamin' => 'JenisKelaminController',
 				'suplai_air' => 'SuplaiAirController',
+				'sumber_listrik' => 'SumberListrikController',
+			]);
+		});
+		Route::group(['prefix'=>'program','namespace'=>'Program'],function (){
+			Route::resources([
+				'data_kebutuhan_khusus' => 'DataKebutuhanKhususController',
+				'data_layanan_khsusus' => 'DataKebutuhanKhususController',
 			]);
 		});
 		Route::group(['prefix'=>'administrasi/sekolah','namespace'=>'Administrasi\Sekolah'],function (){
 			Route::resources([
-				'izin_sekolah' => 'IzinController',
 				'status_sekolah' => 'StatusSekolahController',
+				'sertifikat_iso' => 'SertifikatIsoController',
 				'bentuk_pendidikan' => 'BentukPendidikanController',
+				'status_kepemilikan' => 'StatusKepemilikanController',
 			]);
 		});
 		Route::group(['prefix'=>'akreditasi','namespace'=>'Akreditasi'],function (){
@@ -76,11 +84,12 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function ()
 				}]);
 		Route::resources([
 			'akreditasi' => 'AkreditasiController',
-			'perizinan' => 'IzinController',
+			'rekening' => 'RekeningController',
+			'perizinan' => 'PerizinanController',
 			'lokasi' => 'LokasiSekolahController',
 			'periodik' => 'PeriodikController',
 			'sanitasi' => 'SanitasiController',
-			'sertifikasi' => 'SertifikasiController',
+			'sertifikasi' => 'SertifikasiIsoController',
 			'siswa' => 'SiswaController',
 			'tambahan' => 'TambahanController',
 		]);

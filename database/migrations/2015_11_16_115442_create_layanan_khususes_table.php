@@ -14,6 +14,12 @@ class CreateLayananKhususesTable extends Migration
     {
         Schema::create('layanan_khususes', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('sekolah_id');
+            $table->integer('data_layanan_khusus_id');
+            $table->string('no_sk',30);
+            $table->date('tmt');
+            $table->date('tst');
+            $table->string('file',40);
             $table->timestamps();
         });
     }

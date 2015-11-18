@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTahunAjaranCotrollersTable extends Migration
+class CreateSumberListriksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,9 @@ class CreateTahunAjaranCotrollersTable extends Migration
      */
     public function up()
     {
-        Schema::create('tahun_ajaran_cotrollers', function (Blueprint $table) {
+        Schema::create('sumber_listriks', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title',50);
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ class CreateTahunAjaranCotrollersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tahun_ajaran_cotrollers');
+        Schema::drop('sumber_listriks');
     }
 }

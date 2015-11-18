@@ -14,6 +14,7 @@ class CreateAgamasTable extends Migration
     {
         Schema::create('agamas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title',20);
             $table->timestamps();
         });
     }

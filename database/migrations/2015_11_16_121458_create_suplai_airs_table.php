@@ -14,6 +14,7 @@ class CreateSuplaiAirsTable extends Migration
     {
         Schema::create('suplai_airs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title',50);
             $table->timestamps();
         });
     }

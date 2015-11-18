@@ -14,6 +14,7 @@ class CreateLembagasTable extends Migration
     {
         Schema::create('lembagas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title',100);
             $table->timestamps();
         });
     }
