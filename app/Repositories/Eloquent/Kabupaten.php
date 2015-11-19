@@ -5,5 +5,9 @@ use App\Repositories\RepositorieInterface;
 
 class Kabupaten extends Model implements RepositorieInterface
 {
-		protected $guarded = ['id'];
+		protected $fillable = ['id','provinsi_id','title'];
+		public function provinsi()
+		{
+			return $this->belongsTo(Provinsi::class);
+		}
 }

@@ -1,8 +1,8 @@
 
 <div class="row">
 	<div class="col-xs-12 form-group">
-		{!! Form::label('id','Nama Provinsi') !!}
-		{!! Form::select('id',$ModelProvinsi->lists('title','id'),null,['class'=>'form-control','id'=>'id']) !!}
+		{!! Form::label('provinsi_id','Nama Provinsi') !!}
+		{!! Form::select('provinsi_id',$ModelProvinsi->lists('title','id'),null,['class'=>'form-control','id'=>'provinsi_id']) !!}
 	</div>
 	<div class="col-md-6 form-group">
 		{!! Form::label('id','ID Kabupaten') !!}

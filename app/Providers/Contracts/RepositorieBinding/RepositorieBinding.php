@@ -30,10 +30,11 @@ class RepositorieBinding
 			$this->app->bind($wild_card,function ($item) use ($repositories)
 			{
 				$model = App::make($repositories);
-				return $model->find($item);
+				return $model;
 			});
 			$newWildCard = str_replace(' ', '', ucwords(str_replace('_', ' ', $wild_card)));
 			View::share('Model'.$newWildCard,App::make($repositories));
+
 		}
 	}
 	public function setRepo($repo)
@@ -47,5 +48,10 @@ class RepositorieBinding
 	public function setRepositorieNamespace($repositorieNamespace)
 	{
 		$this->repositorieNamespace = $repositorieNamespace;
+	}
+	public function getrepo($wild_card)
+	{
+		$repo = $this->list[$wild_card]['repo'];
+		return App::make($repo);
 	}
 }

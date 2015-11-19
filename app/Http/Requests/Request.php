@@ -4,9 +4,10 @@ namespace App\Http\Requests;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Http\FormRequest;
-
+use RepoBind;
 abstract class Request extends FormRequest
 {
+    
     public function forbiddenResponse()
     {
     	if($this->ajax() && $this->wantsJson()){
@@ -30,5 +31,10 @@ abstract class Request extends FormRequest
         return $this->redirector->to($this->getRedirectUrl())
                                         ->withInput($this->except($this->dontFlash))
                                         ->withErrors($errors, $this->errorBag);
+    }
+
+    public function getRepo($wild_card)
+    {
+        return RepoBind::getrepo($wild_card);
     }
 }
