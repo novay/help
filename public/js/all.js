@@ -26010,9 +26010,6 @@ function _init() {
       //Listen for remove event triggers
       $(_box).on('click', _this.selectors.remove, function (e) {
         e.preventDefault();
-        if($(this).hasClass('close-form') && typeof window.countAdd !== typeof undefined && window.countAdd !== false  && window.countAdd > 0 ){
-          window.countAdd = 0;
-        }
         _this.remove($(this));
       });
     },
@@ -26238,9 +26235,10 @@ function _init() {
 	            $("#progress-download").fadeOut(800, function() {
 	            	if($('#box-ajax').length > 0){
 		        			$('#box-ajax').slideUp(600,function  (e) {
-		        				$('#ajaxField').prepend($(data.content).css('display', 'none'));
+		        				console.log($(e));
 		        				$(e).remove();
-		        				$(data.content).slideDown(600);
+		        				$('#ajaxField').prepend($(data.content).css('display', 'none'));
+		        				$('#box-ajax').slideDown(600);
 								__bootsrapingAllFunction();
 		        			})
 		        	}else{
@@ -26274,12 +26272,12 @@ function _init() {
 						if($('#box-ajax').length > 0){
 							$('#box-ajax').slideUp(400,function(){
 								$('#ajaxField').html(msg.content);
+								__bootsrapingAllFunction();
 							});
 						}else{
 							$('#ajaxField').html(msg.content);
-						}
-						console.log('call __bootsrapingAllFunction();')
-						__bootsrapingAllFunction();
+							__bootsrapingAllFunction();
+						}					
 					},
 					error:function (e) {
 						var x =1;

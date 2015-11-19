@@ -17,7 +17,8 @@
 						<thead>
 							<tr>
 								<th class="col-xs-1">No.</th>
-								<th>Header text</th>
+								<th>Nama Kabupaten</th>
+								<th>Nama Provinsi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -25,8 +26,9 @@
 							@foreach ($lists as $list)
 								<tr>
 									<td>{{$x++}}</td>
+									<td>{{$list->title}}</td>
 									<td>
-										<span>list item</span>	
+										<span>{{ $list->provinsi->title }}</span>	
 										<div class="pull-right">
 											  {!! Form::open(['route'=>[$destroy,$list->id], 'method'=>'DELETE','class'=>'no-margin form-ajax']) !!}
 											  		<div class="btn-group">

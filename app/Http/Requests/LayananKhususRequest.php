@@ -13,7 +13,7 @@ class LayananKhususRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class LayananKhususRequest extends Request
     public function rules()
     {
         return [
-            //
+            'title'=>'required|max:50|min:3'
         ];
+    }
+    public function attributes()
+    {
+        return ['title'=>'Layanan Khusus'];
     }
 }

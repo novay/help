@@ -12,7 +12,7 @@ RepoBind::bind('Admin\Data\Administrasi\Sekolah\SertifikatIsoController','Sertif
 RepoBind::bind('Admin\Data\Administrasi\Sekolah\StatusKepemilikanController','StatusKepemilikan','status_kepemilikan');
 RepoBind::bind('Admin\Data\Akreditasi\LembagaController','Lembaga','lembaga_akreditasi');
 RepoBind::bind('Admin\Data\Akreditasi\NilaiController','Nilai','nilai_akreditasi');
-RepoBind::bind('Admin\Data\Region\ProvinsiController','Provinsi','provinis');
+RepoBind::bind('Admin\Data\Region\ProvinsiController','Provinsi','provinsi');
 RepoBind::bind('Admin\Data\Region\KabupatenController','Kabupaten','kabupaten');
 RepoBind::bind('Admin\Data\Region\KecamatanController','Kecamatan','kecamatan');
 RepoBind::bind('Admin\Data\Region\KelurahanController','Kelurahan','kelurahan');

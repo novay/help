@@ -13,7 +13,7 @@ class ProvinsiRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class ProvinsiRequest extends Request
     public function rules()
     {
         return [
-            //
+            'id'=>'required|min:2|max:2',
+            'title'=>'required|min:3|max:50'
+        ];
+    }
+    public function attributes()
+    {
+        return [
+            'id'=>' ID Provinsi',
+            'title' => 'Nama Provinsi'
         ];
     }
 }

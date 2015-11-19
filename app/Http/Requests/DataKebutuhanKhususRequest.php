@@ -13,7 +13,7 @@ class DataKebutuhanKhususRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class DataKebutuhanKhususRequest extends Request
     public function rules()
     {
         return [
-            //
+            'title'=>'required|min:3|max:50'
         ];
+    }
+    public function attributes()
+    {
+        return ['title'=>'Kebutuhan Khusus'];
     }
 }

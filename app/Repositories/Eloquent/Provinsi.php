@@ -5,5 +5,5 @@ use App\Repositories\RepositorieInterface;
 
 class Provinsi extends Model implements RepositorieInterface
 {
-		protected $guarded = ['id'];
+		protected $fillable = ['id','title'];
 }

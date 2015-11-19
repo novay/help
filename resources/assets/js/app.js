@@ -17,9 +17,10 @@
 	            $("#progress-download").fadeOut(800, function() {
 	            	if($('#box-ajax').length > 0){
 		        			$('#box-ajax').slideUp(600,function  (e) {
-		        				$('#ajaxField').prepend($(data.content).css('display', 'none'));
+		        				console.log($(e));
 		        				$(e).remove();
-		        				$(data.content).slideDown(600);
+		        				$('#ajaxField').prepend($(data.content).css('display', 'none'));
+		        				$('#box-ajax').slideDown(600);
 								__bootsrapingAllFunction();
 		        			})
 		        	}else{

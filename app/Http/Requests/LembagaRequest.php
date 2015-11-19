@@ -13,7 +13,7 @@ class LembagaRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class LembagaRequest extends Request
     public function rules()
     {
         return [
-            //
+            'title'=>'required|min:3'
+        ];
+    }
+    public function attributs()
+    {
+        return [
+            'title'=>'Lembaga Akreditasi'
         ];
     }
 }

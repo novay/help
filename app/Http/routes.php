@@ -32,7 +32,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function ()
 		Route::group(['prefix'=>'program','namespace'=>'Program'],function (){
 			Route::resources([
 				'data_kebutuhan_khusus' => 'DataKebutuhanKhususController',
-				'data_layanan_khsusus' => 'DataKebutuhanKhususController',
+				'data_layanan_khusus' => 'DataLayananKhususController',
 			]);
 		});
 		Route::group(['prefix'=>'administrasi/sekolah','namespace'=>'Administrasi\Sekolah'],function (){

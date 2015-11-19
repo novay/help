@@ -13,7 +13,7 @@ class NilaiRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class NilaiRequest extends Request
     public function rules()
     {
         return [
-            //
+            'title'=>'required|max:1|min:1'
         ];
+    }
+    public function attributs()
+    {
+        return ['title'=>'Nilai Akreditasi'];
     }
 }

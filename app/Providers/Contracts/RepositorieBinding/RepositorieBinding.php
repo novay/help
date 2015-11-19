@@ -1,9 +1,12 @@
 <?php namespace App\Providers\Contracts\RepositorieBinding;
 use Route;
+use App;
+Use View;
 class RepositorieBinding
 {
 	private $app;
-	private $expired = [];
+	private $list = [];
+
 	private $controllerNamespace = 'App\Http\Controllers';
 	private $repositorieNamespace = 'App\Repositories';
 	private $repo = 'Eloquent';
@@ -19,16 +22,18 @@ class RepositorieBinding
 		$controller = $this->controllerNamespace.'\\'.$controller;
 		$repositories = $this->repositorieNamespace.'\\'.$this->repo.'\\'.$repositories;
 		
-		if(! in_array($controller,$this->expired)){
-			$this->expired[] = $controller;
+		if(! in_array($controller,$this->list)){
+			$this->list[$wild_card] = ['controller'=>$controller,'repo'=>$repositories];
 			$this->app->when($controller)
 					  ->needs($this->repositoriesInterface)
 					  ->give($repositories);
-			Route::bind($wild_card,function ($item) use ($repositories)
+			$this->app->bind($wild_card,function ($item) use ($repositories)
 			{
-				$model = \App::make($repositories);
+				$model = App::make($repositories);
 				return $model->find($item);
 			});
+			$newWildCard = str_replace(' ', '', ucwords(str_replace('_', ' ', $wild_card)));
+			View::share('Model'.$newWildCard,App::make($repositories));
 		}
 	}
 	public function setRepo($repo)
@@ -43,5 +48,4 @@ class RepositorieBinding
 	{
 		$this->repositorieNamespace = $repositorieNamespace;
 	}
-
 }

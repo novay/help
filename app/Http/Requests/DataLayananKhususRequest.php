@@ -13,7 +13,7 @@ class DataLayananKhususRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,12 @@ class DataLayananKhususRequest extends Request
      */
     public function rules()
     {
-        return [
-            //
-        ];
+       return [
+           'title'=>'required|max:50|min:3'
+       ];
+    }
+    public function attributes()
+    {
+       return ['title'=>'Layanan Khusus'];
     }
 }

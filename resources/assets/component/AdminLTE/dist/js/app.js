@@ -554,9 +554,6 @@ function _init() {
       //Listen for remove event triggers
       $(_box).on('click', _this.selectors.remove, function (e) {
         e.preventDefault();
-        if($(this).hasClass('close-form') && typeof window.countAdd !== typeof undefined && window.countAdd !== false  && window.countAdd > 0 ){
-          window.countAdd = 0;
-        }
         _this.remove($(this));
       });
     },

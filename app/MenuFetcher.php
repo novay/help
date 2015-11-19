@@ -33,8 +33,8 @@ class MenuFetcher
 						],
 						['route'=>'program.','name'=>'Program','inGroup'=>
 							[
-								['route'=>'data_layanan_khsusus.index','name'=>'Lembaga Akreditasi'],
-								['route'=>'data_kebutuhan_khusus.index','name'=>'Nilai Akreditasi'],
+								['route'=>'data_layanan_khusus.index','name'=>'Layanan Khusus'],
+								['route'=>'data_kebutuhan_khusus.index','name'=>'Kebutuhan Khusus'],
 							],
 						],
 						['route'=>'region.','name'=>'Region','inGroup'=>
