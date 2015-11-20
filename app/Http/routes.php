@@ -56,7 +56,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function ()
 				'kabupaten'=>'KabupatenController',
 				'kecamatan'=>'KecamatanController',
 				'kelurahan'=>'KelurahanController',
-				'kategori_wilayah'=>'KelurahanController',
+				'kategori_wilayah'=>'KategoriWilayahController',
 				]);
 		});
 		Route::group(['prefix'=>'penyelenggaraan','namespace'=>'Penyelenggaraan'],function ()

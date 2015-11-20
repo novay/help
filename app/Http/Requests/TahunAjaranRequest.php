@@ -13,7 +13,7 @@ class TahunAjaranRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class TahunAjaranRequest extends Request
     public function rules()
     {
         return [
-            //
+            'title'=>'required|min:9|max:9'
         ];
+    }
+    public function attributes()
+    {
+        return['title'=>'Tahun Ajaran'];
     }
 }

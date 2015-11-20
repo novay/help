@@ -10,4 +10,15 @@ class Kabupaten extends Model implements RepositorieInterface
 		{
 			return $this->belongsTo(Provinsi::class);
 		}
+		public function kecamatan()
+		{
+			return $this->hasMany(Kecamatan::class);
+		}
+		public function scopeKabupaten($query,$kabupaten,$provinsi)
+		{
+			return $this->where('id',$kabupaten)->whereHas('provinsi',function ($query) use ($provinsi)
+			{
+				$query->where('provinsis.id',$provinsi);
+			});
+		}
 }

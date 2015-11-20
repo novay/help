@@ -5,5 +5,17 @@ use App\Repositories\RepositorieInterface;
 
 class Kelurahan extends Model implements RepositorieInterface
 {
-		protected $guarded = ['id'];
+		protected $fillable = ['id','kecamatan_id','title'];
+		public function kecamatan()
+		{
+			return $this->belongsTo(Kecamatan::class);
+		}
+		public function provinsi()
+		{
+			return $this->kecamatan->kabupaten->provinsi();
+		}
+		public function kabupaten()
+		{
+			return $this->kecamatan->kabupaten();
+		}
 }

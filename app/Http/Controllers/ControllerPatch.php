@@ -31,7 +31,7 @@ trait ControllerPatch{
 	{
 		return $this->CreateOrUpdate($repo,\App::make($this->request),'update');
 	}
-	public function show(RepositorieInterface $repo)
+	public function show($repo)
 	{
 		$data = $repo;
 		$pageTitle = explode(' ', $this->moduleName)[0];
@@ -49,7 +49,7 @@ trait ControllerPatch{
         $documentTitle =  "Keseluruhan {$this->moduleName}";
         return $this->view($this->uri('index'), compact('lists', 'pageTitle','pageDescription','documentTitle'));
 	}
-	public function edit(RepositorieInterface $repo)
+	public function edit($repo)
 	{
 
 		$data = $repo;

@@ -13,7 +13,7 @@ class KabupatenRequest extends Request
     public function authorize()
     {
         $provinsi = $this->input('provinsi_id');
-        if($this->getRepo('provinsi')->find($provinsi)){
+        if($this->getRepo('provinsi')->find($provinsi)->count() > 0 ){
             return true;
         }
         return false;

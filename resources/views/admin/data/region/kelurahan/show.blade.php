@@ -12,11 +12,36 @@
 	<div class="box-body">
 		<table class="table table-striped">
 			<tr>
-				<td class="col-xs-4">item name</td>
+				<td class="col-xs-4">Nama Provinsi</td>
 				<td class="col-xs-1">:</td>
-				<td>item value</td>
+				<td>{{ $data->provinsi->title }}</td>
 			</tr>
-		</table>		
+			<tr>
+				<td class="col-xs-4">Nama Kabupaten</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->kabupaten->title }}</td>
+			</tr>
+			<tr>
+				<td class="col-xs-4">Nama Kecamatan</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->kecamatan->title }}</td>
+			</tr>
+			<tr>
+				<td class="col-xs-4">Nama Kelurahan</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->title }}</td>
+			</tr>
+			<tr>
+				<td class="col-xs-4">Dibuat tanggal</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->created_at }}</td>
+			</tr>
+			<tr>
+				<td class="col-xs-4">Terakhir diperbarui</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->updated_at }}</td>
+			</tr>
+		</table>
 	</div>
 </div>
 @stop

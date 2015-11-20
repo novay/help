@@ -51,7 +51,6 @@ class MenuFetcher
 								['route'=>'tahun_ajaran.index','name'=>'Tahun Ajaran'],
 								['route'=>'semester.index','name'=>'Semester'],
 								['route'=>'waktu_penyelenggaraan.index','name'=>'Waktu Penyelenggaraan'],
-								['route'=>'waktu_penyelenggaraan.index','name'=>'Waktu Penyelenggaraan'],
 							],
 						],
 						['route'=>'tambahan.','name'=>'Data Tambahan','inGroup'=>

@@ -1,5 +1,7 @@
 <?php namespace App\Providers\Contracts\RepositorieBinding;
 use Route;
+use Request;
+use JsonResponse;
 use App;
 Use View;
 class RepositorieBinding
@@ -27,10 +29,14 @@ class RepositorieBinding
 			$this->app->when($controller)
 					  ->needs($this->repositoriesInterface)
 					  ->give($repositories);
-			$this->app->bind($wild_card,function ($item) use ($repositories)
+			Route::bind($wild_card,function ($id) use ($repositories)
 			{
-				$model = App::make($repositories);
-				return $model;
+				return App::make($repositories)->find($id);
+			},function ()
+			{
+				return Request::ajax() && Request::wontJson()  ? 
+						new JsonResponse(['message'=>'Data tidak ditemukan!'],400) :
+						view("errors.503");
 			});
 			$newWildCard = str_replace(' ', '', ucwords(str_replace('_', ' ', $wild_card)));
 			View::share('Model'.$newWildCard,App::make($repositories));
