@@ -71,12 +71,14 @@ class MenuFetcher
 							'inGroup'=>
 							[
 								['route'=>'inkuisi.index','name'=>'Program Inkuisi'],
-								['route'=>'layanan_khsusus.index','name'=>'Layanan Khusus']
+								['route'=>'layanan_khusus.index','name'=>'Layanan Khusus']
 							]
 						],
 						['route'=>'akreditasi.index','name'=>'Akreditasi Sekolah'],
 						['route'=>'perizinan.index','name'=>'Perizinan Sekolah'],
-						['route'=>'lokasi.index','name'=>'Lokasi Sekolah'],
+						['route'=>'lokasi_sekolah.index','name'=>'Lokasi Sekolah'],
+						['route'=>'rekening.index','name'=>'Rekening Sekolah'],
+						['route'=>'sertifikat_iso.index','name'=>'Sertifikasi ISO Sekolah'],
 						['route'=>'periodik.index','name'=>'Data Periodik Sekolah'],
 						['route'=>'sanitasi.index','name'=>'Data Sanitasi'],
 						['route'=>'siswa.index','name'=>'Data Siswa'],

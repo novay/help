@@ -75,7 +75,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function ()
 		{
 			Route::resources([
 				'inkuisi'=>'InkuisiController',
-				'layanan_khsusus'=>'LayananKhususController'
+				'layanan_khusus'=>'LayananKhususController'
 			]);
 		});	
 		Route::get('massasigment',['as'=>'massasigment','uses'=>function ()
@@ -86,8 +86,10 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function ()
 			'akreditasi' => 'AkreditasiController',
 			'rekening' => 'RekeningController',
 			'perizinan' => 'PerizinanController',
-			'lokasi' => 'LokasiSekolahController',
+			'lokasi_sekolah' => 'LokasiSekolahController',
 			'periodik' => 'PeriodikController',
+			'rekening' => 'RekeningController',
+			'sertifikat_iso' => 'SertifikasiIsoController',
 			'sanitasi' => 'SanitasiController',
 			'sertifikasi' => 'SertifikasiIsoController',
 			'siswa' => 'SiswaController',
