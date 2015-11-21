@@ -136,6 +136,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -199,6 +200,7 @@ return [
         'RepoBind'  => App\Providers\Contracts\RepositorieBinding\RepositorieBindingFacade::class,
         'Form'=> Illuminate\Html\FormFacade::class, 
         'HTML'=> Illuminate\Html\HtmlFacade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         
 
     ],
