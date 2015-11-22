@@ -148,6 +148,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositorieBindingServiceProvider::class,
+        App\Providers\Contracts\UploadHelper\UploadHelperServiceProvide::class,
 
     ],
 
@@ -198,6 +199,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'RepoBind'  => App\Providers\Contracts\RepositorieBinding\RepositorieBindingFacade::class,
+        'UploadHelper'  => App\Providers\Contracts\UploadHelper\UploadHelperFacade::class,
         'Form'=> Illuminate\Html\FormFacade::class, 
         'HTML'=> Illuminate\Html\HtmlFacade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,

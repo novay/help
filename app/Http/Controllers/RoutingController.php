@@ -50,11 +50,10 @@ trait RoutingController{
      */
     public function routeBackWithError($from = __METHOD__)
     {
-        $message = "{$this->moduleName} gagal ";
-        $message.= $this->routeMessage($from);
-        $errors = \Session::has('errors') ? \Session::get('errors') : 'undefined';
+        $errors = \Session::has('errors') ? \Session::get('errors') : [];
+        $errors[] = "{$this->moduleName} gagal ".$this->routeMessage($from);
         return \Request::ajax() ?
-            \Response::json(compact('errors','message'),422):
+            \Response::json(compact('errors'),422):
             redirect()->back()->withInput()->withErrors([$message]);
     }
 }

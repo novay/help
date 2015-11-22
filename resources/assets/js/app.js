@@ -40,7 +40,14 @@
 
 	      });
 	      $(document).on('submit','form.form-ajax',function  (e) {
-	      	var _this = $(this);
+	      	var _this = $(this),
+	      		inputFile = $('input[type=file]');
+	      	if(_this.has(inputFile))
+	      	{
+	      		$.each(_this.children(inputFile), function(index, val) {
+	      			 console.log(index,val);
+	      		});
+	      	}
 	        e.preventDefault();
 	        e.stopPropagation();
 			toastr.options = window.toastr.options;
@@ -101,4 +108,7 @@ function __bootsrapingAllFunction() {
 	});
 	}
 	$('select').select2();
+	$('.datechooser').datetimepicker({
+		format: "YYYY-MM-DD"
+	});
  }

@@ -83,6 +83,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function ()
 					return "you found me :V";
 				}]);
 		Route::resources([
+			'sekolah' => 'SekolahController',
 			'akreditasi' => 'AkreditasiController',
 			'rekening' => 'RekeningController',
 			'perizinan' => 'PerizinanController',

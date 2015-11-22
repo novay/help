@@ -14,6 +14,7 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.less([
         '../component/bootstrap/less/bootstrap.less',
+        '../component/jasny-bootstrap/less/build/jasny-bootstrap.less',
         'main.less',
         ]);
     mix.styles([
@@ -22,6 +23,7 @@ elixir(function(mix) {
     	'../component/AdminLTE/plugins/datatables/dataTables.bootstrap.css',
     	'../component/AdminLTE/plugins/select2/select2.min.css',
     	'../component/AdminLTE/plugins/timepicker/bootstrap-timepicker.min.css',
+        '../component/eonasdan-bootstrap-datetimepicker/src/less/bootstrap-datetimepicker-build.less'
     	]);
     mix.scripts([
         '../component/jquery/dist/jquery.min.js',
@@ -40,6 +42,10 @@ elixir(function(mix) {
         '../component/morris.js/morris.min.js',
         '../component/slimScroll/jquery.slimscroll.min.js',
         '../component/AdminLTE/dist/js/app.js',
+        '../component/jasny-bootstrap/js/fileinput.js',
+        '../component/jasny-bootstrap/js/transition.js',
+        '../component/moment/min/moment-with-locales.min.js',
+        '../component/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
         'app.js',
         ]);
     mix.copy('resources/assets/component/Ionicons/fonts','public/component/Ionicons/fonts');

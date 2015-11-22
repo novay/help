@@ -21,6 +21,7 @@ RepoBind::bind('Admin\Data\Penyelenggaraan\WaktuPenyelengaraanController','Waktu
 RepoBind::bind('Admin\Data\Penyelenggaraan\TahunAjaranController','TahunAjaran','tahun_ajaran');
 RepoBind::bind('Admin\Data\Penyelenggaraan\SemesterController','Semester','semester');
 RepoBind::bind('Admin\YayasanController','Yayasan','yayasan');
+RepoBind::bind('Admin\Sekolah\SekolahController','Sekolah','sekolah');
 RepoBind::bind('Admin\Sekolah\Program\InkuisiController','Inkuisi','inkuisi');
 RepoBind::bind('Admin\Sekolah\Program\LayananKhususController','LayananKhusus','layanan_khsusus');
 RepoBind::bind('Admin\Sekolah\AkreditasiController','Akreditasi','akreditasi');

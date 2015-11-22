@@ -4,13 +4,15 @@ namespace App\Http\Controllers\Admin\Sekolah;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\RepositorieInterface;
-
+use UploadHelper;
 use App\Http\Requests\AkreditasiRequest;
 
 class AkreditasiController extends Controller
 {
      function __construct(RepositorieInterface $repo) {
+      UploadHelper::setPath('img/sekolah/akreditasi');
      	parent::__construct($repo,'AkreditasiRequest');
+
      }
      /**
       * code for create and update data in data store
@@ -20,7 +22,17 @@ class AkreditasiController extends Controller
       */
      public function CreateOrUpdate(RepositorieInterface $model, AkreditasiRequest $r, $from)
      {
-        return $model->fill($r->all())->save() ? $this->routeAndSuccess($from) : $this->routeBackWithError($form);
+        UploadHelper::allowedFileType('image');
+        if(UploadHelper::setFile($r->file('file'))){
+          if(UploadHelper::checkFile()){
+            if(UploadHelper::upload()){
+              $data = $r->all();
+              $data['file'] = UploadHelper::getFileName();
+              return $model->fill($data)->save() ? $this->routeAndSuccess($from) : $this->routeBackWithError($from);
+            }
+          }
+        }
+       return $this->routeBackWithError($from);  
      }
      /**   
       *delete data in data store

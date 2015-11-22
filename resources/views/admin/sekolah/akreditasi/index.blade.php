@@ -17,7 +17,10 @@
 						<thead>
 							<tr>
 								<th class="col-xs-1">No.</th>
-								<th>Header text</th>
+								<th>Sekolah</th>
+								<th>Lembaga</th>
+								<th>Nilai</th>
+								<th>Tanggal Berakhir</th>
 							</tr>
 						</thead>
 						<tbody>
