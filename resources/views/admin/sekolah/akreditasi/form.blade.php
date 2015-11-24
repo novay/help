@@ -12,11 +12,6 @@
 			{!! Form::label('lembaga_id','Lembaga')!!}
 			{!! Form::select('lembaga_id',$ModelLembagaAkreditasi->lists('title','id'),null,['class'=>'form-control','id'=>'lembaga_id'])!!}
 		</div>
-		<div class="form-group col-md-12">
-			{!! Form::label('nilai_id','Nilai')!!}
-			{!! Form::select('nilai_id',$ModelNilaiAkreditasi->lists('title','id'),null,['class'=>'form-control','id'=>'nilai_id'])!!}
-		</div>
-		
 	</div>
 	<div class="col-md-6">
 		<div class="col-md-12 form-group">

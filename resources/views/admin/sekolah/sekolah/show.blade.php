@@ -12,10 +12,65 @@
 	<div class="box-body">
 		<table class="table table-striped">
 			<tr>
-				<td class="col-xs-4">item name</td>
+				<td class="col-xs-4">NPSN</td>
 				<td class="col-xs-1">:</td>
-				<td>item value</td>
+				<td>
+					{{ $data->npsn }}
+					{{ $data->file_npsn }}
+				</td>
 			</tr>
+			<tr>
+				<td class="col-xs-4">NSS</td>
+				<td class="col-xs-1">:</td>
+				<td>
+					{{ $data->nss }}
+					{{ $data->file_nss }}
+				</td>
+			</tr>
+			<tr>
+				<td class="col-xs-4">Nama Sekolah</td>
+				<td class="col-xs-1">:</td>
+				<td>
+					{{ $data->title }}
+					{{ $data->file_logo }}
+				</td>
+			</tr>
+			<tr>
+				<td class="col-xs-4">Bentuk Pendidikan</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->bentuk_pendidikan->title }}</td>
+			</tr>
+			<tr>
+				<td class="col-xs-4">Status Sekolah</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->status_sekolah->title }}</td>
+			</tr>
+			<tr>
+				<td class="col-xs-4">Status Kepemilikan</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->status_kepemilikan->title }}</td>
+			</tr>
+			<tr>
+				<td class="col-xs-4">No. Telp</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->no_telp }}</td>
+			</tr>
+			<tr>
+				<td class="col-xs-4">No. HP</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->no_hp }}</td>
+			</tr>
+			<tr>
+				<td class="col-xs-4">E-mail</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->email }}</td>
+			</tr>
+			<tr>
+				<td class="col-xs-4">Website</td>
+				<td class="col-xs-1">:</td>
+				<td>{{ $data->website }}</td>
+			</tr>
+
 		</table>		
 	</div>
 </div>

@@ -40,14 +40,7 @@
 
 	      });
 	      $(document).on('submit','form.form-ajax',function  (e) {
-	      	var _this = $(this),
-	      		inputFile = $('input[type=file]');
-	      	if(_this.has(inputFile))
-	      	{
-	      		$.each(_this.children(inputFile), function(index, val) {
-	      			 console.log(index,val);
-	      		});
-	      	}
+	      	var _this = $(this);
 	        e.preventDefault();
 	        e.stopPropagation();
 			toastr.options = window.toastr.options;
@@ -55,42 +48,51 @@
 					url: _this.attr('action'),
 					type: _this.attr('method'),
 					dataType: 'json',
-					data: _this.serialize(),
+					data: new FormData(e.target),
+					processData:false,
+					contentType:false,
+					beforeSend:function(){
+						$('#box-ajax').slideUp(400,function(){
+							$('#progress-download').fadeIn();
+						})
+					},
+					progress:function(){
+						var pct = (e.loaded / e.total) * 100;
+						$('#progress-bar-download').width(pct+"%");
+					},
 					success:function (msg) {
-						toastr.success(msg.message,'');
-						if($('#box-ajax').length > 0){
-							$('#box-ajax').slideUp(400,function(){
-								$('#ajaxField').html(msg.content);
-							});
-						}else{
+						$('#progress-download').fadeOut(400, function() {
+							toastr.success(msg.message,'');
 							$('#ajaxField').html(msg.content);
-						}
-						console.log('call __bootsrapingAllFunction();')
-						__bootsrapingAllFunction();
+							__bootsrapingAllFunction();
+						});
 					},
 					error:function (e) {
 						var x =1;
-						if(e.responseJSON !== undefined){
-							if(e.responseJSON.message !== undefined){
-								toastr.error(e.responseJSON.message,'');
-							}
-							if( ! $.isEmptyObject(e.responseJSON.errors)){
-								$.each(e.responseJSON.errors, function(index, val) {
-									setTimeout(function  () {
-									 toastr.error(val,'');
-									},x*500);
-									x++;
-								});
-							}
-						}else{
-							$.each(e.responseJSON, function(index, val) {
-								setTimeout(function  () {
-								 toastr.error(val,'');
-								},x*500);
-								x++;
+						$('#progress-download').fadeOut(400, function() {
+							$('#box-ajax').slideDown(400, function() {
+								if(e.responseJSON !== undefined){
+									if(e.responseJSON.message !== undefined){
+										toastr.error(e.responseJSON.message,'');
+									}
+									if( ! $.isEmptyObject(e.responseJSON.errors)){
+										$.each(e.responseJSON.errors, function(index, val) {
+											setTimeout(function  () {
+											 toastr.error(val,'');
+											},x*500);
+											x++;
+										});
+									}
+								}else{
+									$.each(e.responseJSON, function(index, val) {
+										setTimeout(function  () {
+										 toastr.error(val,'');
+										},x*500);
+										x++;
+									});
+								}
 							});
-
-						}
+						});
 					}
 				});			
 	      });

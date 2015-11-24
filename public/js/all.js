@@ -29100,8 +29100,6 @@ llll:"ddd, D MMM YYYY HH:mm"},calendar:{sameDay:"[Hôm nay lúc] LT",nextDay:"[N
 }));
 
 (function () {
-		
-		var files;
 		$(document).on('click','a.ajax-link',function  (e) {
 	        var _this = $(this);
 	        e.preventDefault();			
@@ -29109,7 +29107,6 @@ llll:"ddd, D MMM YYYY HH:mm"},calendar:{sameDay:"[Hôm nay lúc] LT",nextDay:"[N
 	          url: _this.attr('href'),
 	          type: 'GET',
 	          dataType: 'json',
-
 	          beforeSend:function  () {
 	            $('#progress-download').fadeIn();
 	          },
@@ -29141,12 +29138,8 @@ llll:"ddd, D MMM YYYY HH:mm"},calendar:{sameDay:"[Hôm nay lúc] LT",nextDay:"[N
 	             
 	          }
 	        });
+
 	      });
-
-		  $(document).on('change','input',function  (e) {
-			files = e.target.files;
-		  })
-
 	      $(document).on('submit','form.form-ajax',function  (e) {
 	      	var _this = $(this);
 	        e.preventDefault();
@@ -29156,17 +29149,15 @@ llll:"ddd, D MMM YYYY HH:mm"},calendar:{sameDay:"[Hôm nay lúc] LT",nextDay:"[N
 					url: _this.attr('action'),
 					type: _this.attr('method'),
 					dataType: 'json',
-					data: new FormData(this), 
-					contentType: false,       
-					cache: false,             
+					data: new FormData(e.target),
 					processData:false,
-					beforeSend:function  () {
-						$('#box-ajax').slideUp(400,function  () {
+					contentType:false,
+					beforeSend:function(){
+						$('#box-ajax').slideUp(400,function(){
 							$('#progress-download').fadeIn();
-						});
-
+						})
 					},
-					progress:function (e) {
+					progress:function(){
 						var pct = (e.loaded / e.total) * 100;
 						$('#progress-bar-download').width(pct+"%");
 					},
@@ -29178,9 +29169,9 @@ llll:"ddd, D MMM YYYY HH:mm"},calendar:{sameDay:"[Hôm nay lúc] LT",nextDay:"[N
 						});
 					},
 					error:function (e) {
+						var x =1;
 						$('#progress-download').fadeOut(400, function() {
-							$('#box-ajax').slideDown(400,function  () {
-								var x =1;
+							$('#box-ajax').slideDown(400, function() {
 								if(e.responseJSON !== undefined){
 									if(e.responseJSON.message !== undefined){
 										toastr.error(e.responseJSON.message,'');

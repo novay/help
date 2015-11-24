@@ -1,7 +1,7 @@
 @extends('admin_template')
 @section('content')
 	  <div id="box-ajax">
-	  {!! Form::open(['route'=>$store, 'method'=>'POST','class'=>'form form-ajax']) !!}
+	  {!! Form::open(['route'=>$store, 'method'=>'POST','class'=>'form form-ajax','files'=>true]) !!}
 <div class="box box-primary">
 		
 			<div class="box-header">

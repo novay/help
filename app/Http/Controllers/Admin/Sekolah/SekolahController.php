@@ -20,8 +20,36 @@ class SekolahController extends Controller
       */
      public function CreateOrUpdate(RepositorieInterface $model, SekolahRequest $r, $from)
      {
-        return $model->fill($r->all())->save() ? $this->routeAndSuccess($from) : $this->routeBackWithError($form);
-     }
+      if($form == 'update'){
+        UploadHelper::isUpdate();
+      }
+        $data = $r->all();
+        if(UploadHelper::setFile($r->file('file_npsn'))){
+          if(UploadHelper::checkFile()){
+            if(UploadHelper::upload()){
+              $data['file_npsn'] = UploadHelper::getFileName();
+            }
+          }
+        }
+        if(UploadHelper::setFile($r->file('file_nss'))){
+          if(UploadHelper::checkFile()){
+            if(UploadHelper::upload()){
+              $data['file_nss'] = UploadHelper::getFileName();
+            }
+          }
+        }
+        if(UploadHelper::setFile($r->file('file_logo'))){
+          if(UploadHelper::checkFile()){
+            if(UploadHelper::upload()){
+              $data['file_logo'] = UploadHelper::getFileName();
+            }
+          }
+        }
+        if(Session::has('errors')){
+          return $this->routeBackWithError($form);
+        }
+        return $model->fill($data)->save() ? $this->routeAndSuccess($from) : $this->routeBackWithError($form);
+      }
      /**   
       *delete data in data store
       * @param  RepositorieInterface $model [description]

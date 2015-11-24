@@ -6,4 +6,16 @@ use App\Repositories\RepositorieInterface;
 class Sekolah extends Model implements RepositorieInterface
 {
 		protected $guarded = ['id'];
+		public function bentuk_pendidikan()
+		{
+			return $this->belongsTo(BentukPendidikan::class);
+		}
+		public function status_sekolah()
+		{
+			return $this->belongsTo(StatusSekolah::class);
+		}
+		public function status_kepemilikan()
+		{
+			return $this->belongsTo(StatusKepemilikan::class);
+		}
 }
