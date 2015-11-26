@@ -1,0 +1,57 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'laravel-elixir-bower-io',
+1 verbose cli   '-g' ]
+2 info using npm@3.4.0
+3 info using node@v0.10.25
+4 verbose node symlink /usr/bin/node
+5 silly loadCurrentTree Starting
+6 silly install loadCurrentTree
+7 silly install readGlobalPackageData
+8 silly fetchPackageMetaData laravel-elixir-bower-io
+9 silly fetchNamedPackageData laravel-elixir-bower-io
+10 silly mapToRegistry name laravel-elixir-bower-io
+11 silly mapToRegistry using default registry
+12 silly mapToRegistry registry https://registry.npmjs.org/
+13 silly mapToRegistry uri https://registry.npmjs.org/laravel-elixir-bower-io
+14 verbose request uri https://registry.npmjs.org/laravel-elixir-bower-io
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 00:27:47
+17 verbose request id 2190b936aae2581d
+18 http request GET https://registry.npmjs.org/laravel-elixir-bower-io
+19 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+20 info attempt registry request try #2 at 00:28:22
+21 http request GET https://registry.npmjs.org/laravel-elixir-bower-io
+22 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+23 info attempt registry request try #3 at 00:29:47
+24 http request GET https://registry.npmjs.org/laravel-elixir-bower-io
+25 silly fetchPackageMetaData Error: getaddrinfo ENOTFOUND
+25 silly fetchPackageMetaData     at errnoException (dns.js:37:11)
+25 silly fetchPackageMetaData     at Object.onanswer [as oncomplete] (dns.js:124:16)
+25 silly fetchPackageMetaData  error for laravel-elixir-bower-io { [Error: getaddrinfo ENOTFOUND] code: 'ENOTFOUND', errno: 'ENOTFOUND', syscall: 'getaddrinfo' }
+26 silly rollbackFailedOptional Starting
+27 silly rollbackFailedOptional Finishing
+28 silly runTopLevelLifecycles Starting
+29 silly runTopLevelLifecycles Finishing
+30 silly install printInstalled
+31 verbose stack Error: getaddrinfo ENOTFOUND
+31 verbose stack     at errnoException (dns.js:37:11)
+31 verbose stack     at Object.onanswer [as oncomplete] (dns.js:124:16)
+32 verbose cwd /home/yudhana/Work/web/resources/assets
+33 error Linux 3.16.0-53-generic
+34 error argv "node" "/usr/local/bin/npm" "install" "laravel-elixir-bower-io" "-g"
+35 error node v0.10.25
+36 error npm  v3.4.0
+37 error code ENOTFOUND
+38 error errno ENOTFOUND
+39 error syscall getaddrinfo
+40 error network getaddrinfo ENOTFOUND
+40 error network This is most likely not a problem with npm itself
+40 error network and is related to network connectivity.
+40 error network In most cases you are behind a proxy or have bad network settings.
+40 error network
+40 error network If you are behind a proxy, please make sure that the
+40 error network 'proxy' config is set properly.  See: 'npm help config'
+41 verbose exit [ 1, true ]

@@ -34,9 +34,7 @@ class RepositorieBinding
 				return App::make($repositories)->find($id);
 			},function ()
 			{
-				return Request::ajax() && Request::wontJson()  ? 
-						new JsonResponse(['message'=>'Data tidak ditemukan!'],400) :
-						view("errors.503");
+				return Request::ajax() && Request::wontJson()  ? new JsonResponse(['message'=>'Data tidak ditemukan!'],400) : wview("errors.503");
 			});
 			$newWildCard = str_replace(' ', '', ucwords(str_replace('_', ' ', $wild_card)));
 			View::share('Model'.$newWildCard,App::make($repositories));

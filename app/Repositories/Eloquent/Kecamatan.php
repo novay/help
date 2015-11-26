@@ -10,6 +10,11 @@ class Kecamatan extends Model implements RepositorieInterface
 		{
 			return $this->belongsTo(Kabupaten::class);
 		}
+		public function lists($title,$key)
+		{
+			$o[] = "--Pilih salah satu--";
+			return array_merge_recursive($o , parent::lists($title,$key)->toArray());
+		}
 		public function provinsi()
 		{
 			return $this->kabupaten->provinsi();

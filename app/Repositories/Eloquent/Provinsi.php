@@ -14,6 +14,11 @@ class Provinsi extends Model implements RepositorieInterface
 		{
 			return $this->hasManyThrough(Kabupaten::class,Kecamatan::class);
 		}
+		public function lists($title,$key)
+		{
+			$o[] = "--Pilih salah satu--";
+			return array_merge_recursive($o , parent::lists($title,$key)->toArray());
+		}
 		/**
 		 * validation region from provinsi,kabupaten, kecamatan and kelurahan
 		 * @return boolean

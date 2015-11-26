@@ -17,7 +17,10 @@
 						<thead>
 							<tr>
 								<th class="col-xs-1">No.</th>
-								<th>Header text</th>
+								<th>Nama Yayasan</th>
+								<th>Pimpinan Yayasan</th>
+								<th>No. Telp/Hp</th>
+								<th>Tanggal Dibuat</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -25,8 +28,11 @@
 							@foreach ($lists as $list)
 								<tr>
 									<td>{{$x++}}</td>
+									<td>{{$list->nama}}</td>
+									<td>{{$list->pimpinan}}</td>
+									<td>{{$list->no_telp}}/{{$list->no_hp}}</td>
 									<td>
-										<span>list item</span>	
+										<span>{{ $list->updated_at }}</span>	
 										<div class="pull-right">
 											  {!! Form::open(['route'=>[$destroy,$list->id], 'method'=>'DELETE','class'=>'no-margin form-ajax']) !!}
 											  		<div class="btn-group">

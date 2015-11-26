@@ -20,7 +20,7 @@ class SekolahController extends Controller
       */
      public function CreateOrUpdate(RepositorieInterface $model, SekolahRequest $r, $from)
      {
-      if($form == 'update'){
+      if($from == 'update'){
         UploadHelper::isUpdate();
       }
         $data = $r->all();

@@ -69,7 +69,7 @@
 					},
 					error:function (e) {
 						var x =1;
-						$('#progress-download').fadeOut(400, function() {
+						$('#progress-download').slideUp(400, function() {
 							$('#box-ajax').slideDown(400, function() {
 								if(e.responseJSON !== undefined){
 									if(e.responseJSON.message !== undefined){
@@ -109,7 +109,9 @@ function __bootsrapingAllFunction() {
 		"autoWidth": false
 	});
 	}
-	$('select').select2();
+	$('select').select2({
+		placeholder:"--Pilih salah satu--"
+	});
 	$('.datechooser').datetimepicker({
 		format: "YYYY-MM-DD"
 	});

@@ -142,6 +142,7 @@ return [
          * Application Service Providers...
          */
         Illuminate\Html\HtmlServiceProvider::Class,
+        App\Providers\FormBuilderServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\GeneratorServiceProvider::class,

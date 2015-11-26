@@ -22,6 +22,9 @@ class AkreditasiController extends Controller
       */
      public function CreateOrUpdate(RepositorieInterface $model, AkreditasiRequest $r, $from)
      {
+      if($from == 'update'){
+        $this->upload->isUpdate();
+      }
         UploadHelper::allowedFileType('image');
         if(UploadHelper::setFile($r->file('file'))){
           if(UploadHelper::checkFile()){

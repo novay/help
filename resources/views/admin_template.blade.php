@@ -9,6 +9,7 @@
       <title>{{ $documentTitle or "AdminLTE Dashboard" }}</title>
       <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
       <link href="{{ asset("css/all.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("css/addons.css") }}" rel="stylesheet" type="text/css" />
       <link href="{{ asset("css/app.css") }}" rel="stylesheet" type="text/css" />
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

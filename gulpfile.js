@@ -21,10 +21,12 @@ elixir(function(mix) {
         '../component/AdminLTE/plugins/iCheck/all.css',
         '../component/AdminLTE/plugins/morris/morris.css',
     	'../component/AdminLTE/plugins/datatables/dataTables.bootstrap.css',
-    	'../component/AdminLTE/plugins/select2/select2.min.css',
     	'../component/AdminLTE/plugins/timepicker/bootstrap-timepicker.min.css',
         '../component/eonasdan-bootstrap-datetimepicker/src/less/bootstrap-datetimepicker-build.less'
     	]);
+    mix.sass([
+        '../component/select2/src/scss/core.scss'
+        ],'public/css/addons.css')
     mix.scripts([
         '../component/jquery/dist/jquery.min.js',
         '../component/AdminLTE/bootstrap/js/bootstrap.min.js',
@@ -46,6 +48,7 @@ elixir(function(mix) {
         '../component/jasny-bootstrap/js/transition.js',
         '../component/moment/min/moment-with-locales.min.js',
         '../component/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
+        '../component/select2/dist/js/select2.min.js',
         'app.js',
         ]);
     mix.copy('resources/assets/component/Ionicons/fonts','public/component/Ionicons/fonts');

@@ -61,7 +61,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="form-group col-md-4">
+	<div class="form-group col-md-3 col-xs-12">
 		<div class="col-xs-12">
 			{!! Form::label('bentuk_pendidikan_id','Bentuk Pendidikan')!!}
 		</div>
@@ -69,7 +69,7 @@
 			{!! Form::select('bentuk_pendidikan_id',$ModelBentukPendidikan->lists('title','id'),null,['class'=>'form-control','id'=>'bentuk_pendidikan_id'])!!}
 		</div>
 	</div>
-	<div class="form-group col-md-4">
+	<div class="form-group col-md-3 col-xs-12">
 		<div class="col-xs-12">
 			{!! Form::label('status_sekolah_id','Status Sekolah')!!}
 		</div>
@@ -77,12 +77,20 @@
 			{!! Form::select('status_sekolah_id',$ModelStatusSekolah->lists('title','id'),null,['class'=>'form-control','id'=>'status_sekolah_id'])!!}
 		</div>
 	</div>
-	<div class="form-group col-md-4">
+	<div class="form-group col-md-3 col-xs-12">
 		<div class="col-xs-12">
 			{!! Form::label('status_kepemilikan_id','Status Kepemilikan')!!}
 		</div>
 		<div class="col-xs-12">
 			{!! Form::select('status_kepemilikan_id',$ModelStatusKepemilikan->lists('title','id'),null,['class'=>'form-control','id'=>'status_kepemilikan_id'])!!}
+		</div>
+	</div>
+	<div class="form-group col-md-3 col-xs-12">
+		<div class="col-xs-12">
+			{!! Form::label('yayasan_id','Status Kepemilikan')!!}
+		</div>
+		<div class="col-xs-12">
+			{!! Form::select('yayasan_id',$ModelYayasan->lists('title','id'),null,['class'=>'form-control','id'=>'yayasan_id'])!!}
 		</div>
 	</div>
 	<div class="form-group col-md-6">

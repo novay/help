@@ -17,6 +17,21 @@ Route::get('/', function () {
 });
 Route::group(['prefix'=>'admin','namespace'=>'Admin'],function ()
 {
+	Route::get('/api/{name}/{id}',function ($name,$id)
+	{
+		if('provinsi' == $name){
+			$o[] = "--Pilih Salah satu--";
+			return array_merge_recursive($o,RepoBind::getRepo('kabupaten')->where('provinsi_id',$id)->lists('title','id')->toArray());
+		}
+		if('kabupaten' == $name){
+			$o[] = "--Pilih Salah satu--";
+			return array_merge_recursive($o,RepoBind::getRepo('kecamatan')->where('kabupaten_id',$id)->lists('title','id')->toArray());
+		}
+		if('kecamatan' == $name){
+			$o[] = "--Pilih Salah satu--";
+			return array_merge_recursive($o,RepoBind::getRepo('kelurahan')->where('kecamatan_id',$id)->lists('title','id')->toArray());
+		}
+	})->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
 	Route::group(['prefix'=>'data','namespace'=>'Data'],function ()
 	{
 		

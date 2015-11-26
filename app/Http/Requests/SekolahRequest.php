@@ -13,9 +13,9 @@ class SekolahRequest extends Request
      */
     public function authorize()
     {
-        if ($this->getRepo('bentuk_pendidikan')->findOrFail($this->input('bentuk_pendidikan_id'))){
-                if ($this->getRepo('status_sekolah')->findOrFail($this->input('status_sekolah_id'))){
-                    if ($this->getRepo('status_kepemilikan')->findOrFail($this->input('status_kepemilikan_id')))
+        if ($this->getRepo('bentuk_pendidikan')->find($this->input('bentuk_pendidikan_id'))){
+                if ($this->getRepo('status_sekolah')->find($this->input('status_sekolah_id'))){
+                    if ($this->getRepo('status_kepemilikan')->find($this->input('status_kepemilikan_id')))
                         return true;
                 }
         }

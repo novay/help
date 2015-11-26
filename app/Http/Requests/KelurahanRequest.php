@@ -30,7 +30,7 @@ class KelurahanRequest extends Request
         'title' => 'required|min:3|max:50',
         'id'=>'required',
         'provinsi_id' =>'required|digits:2',
-        'kabupaten_id' =>'required|digits:4'
+        'kabupaten_id' =>'required|digits:4',
         'kecamatan_id' =>'required|digits:7'
         ];
     }
@@ -40,7 +40,7 @@ class KelurahanRequest extends Request
      'title' => 'Nama Kelurahan',
      'id'=>'ID Kelurahan',
      'provinsi_id' =>'Nama Provinsi',
-     'kabupaten_id' =>'Nama Kabupaten'
+     'kabupaten_id' =>'Nama Kabupaten',
      'kecamatan_id' =>'Nama Kecamatan'
      ];   
     }
