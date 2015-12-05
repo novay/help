@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('admin.sekolah.sekolah.index');
     // $m = new App\Repositories\Eloquent\JenisKelamin;
 });
 Route::group(['prefix'=>'admin','namespace'=>'Admin'],function ()
