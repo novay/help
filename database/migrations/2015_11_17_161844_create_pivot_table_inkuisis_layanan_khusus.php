@@ -26,6 +26,6 @@ class CreatePivotTableInkuisisLayananKhusus extends Migration
      */
     public function down()
     {
-        Schema::drop('inkuisis_layanan_khusus');
+        Schema::drop('data_layanan_khusus_inkuisis');
     }
 }

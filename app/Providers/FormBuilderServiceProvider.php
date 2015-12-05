@@ -7,6 +7,7 @@ use App\Providers\Contracts\Form\FormBuilder;
 
 class FormBuilderServiceProvider extends ServiceProvider
 {
+    protected $defer = true;
     /**
      * Bootstrap the application services.
      *

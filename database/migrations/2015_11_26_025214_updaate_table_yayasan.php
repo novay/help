@@ -13,12 +13,14 @@ class UpdaateTableYayasan extends Migration
     {
         Schema::table('yayasans', function($table) {
             $table->string('pimpinan',100);
-            if (Schema::hasColumn('yayasans','pimpinanan'))
-            {
-                DB::update('UPDATE yayasans set pimpinan = pimpinanan');
-                $table->dropColumn('pimpinanan');
-            }
         });
+        if (Schema::hasColumn('yayasans','pimpinanan'))
+        {
+            DB::update('UPDATE yayasans set pimpinan = pimpinanan');
+            Schema::table('yayasans', function($table) {
+                $table->dropColumn('pimpinanan');
+            });
+        }
     }
 
     /**
@@ -30,11 +32,13 @@ class UpdaateTableYayasan extends Migration
     {
         Schema::table('yayasans', function($table) {
             $table->string('pimpinanan',100);
-            if (Schema::hasColumn('yayasans','pimpinan'))
-            {
-                DB::update('UPDATE yayasans set pimpinanan = pimpinan');
-                $table->dropColumn('pimpinan');
-            }
         });
+        if (Schema::hasColumn('yayasans','pimpinan'))
+        {
+            DB::update('UPDATE yayasans set pimpinanan = pimpinan');
+            Schema::table('yayasans', function($table) {
+                $table->dropColumn('pimpinan');
+            });
+        }
     }
 }

@@ -1,9 +1,9 @@
-<?php namespace \App\Providers\Contracts\Form;
+<?php namespace App\Providers\Contracts\Form;
 	/**
 	* 	overiding default FormBuilder
 	*/
 	use  Illuminate\Html\FormBuilder as BaseFormBuilder;
-	class FormBuilder extends BaseFormBuilder 
+	class FormBuilder extends BaseFormBuilder
 	{
 		
 		/**

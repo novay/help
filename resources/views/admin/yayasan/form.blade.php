@@ -20,15 +20,15 @@
 		</div>				
 		<div class="form-group">
 			{!! Form::label('kabupaten','Kabupaten')!!}
-			{!! Form::select('kabupaten',isset($data)?$ModelKabupaten->lists('title','id'):[],null,['class'=>'form-control chain','data-next-chain'=>'kecamatan','disabled','id'=>'kabupaten'])!!}
+			{!! Form::select('kabupaten',isset($data)?$ModelKabupaten->lists('title','id'):[],null,['class'=>'form-control chain','data-next-chain'=>'kecamatan',(isset($data) ? 'readonly':'disabled'),'id'=>'kabupaten'])!!}
 		</div>		
 		<div class="form-group">
 			{!! Form::label('kecamatan','Kecamatan')!!}
-			{!! Form::select('kecamatan',isset($data)?$ModelKecamatan->lists('title','id'):[],null,['class'=>'form-control chain','data-next-chain'=>'kelurahan_id','disabled','id'=>'kecamatan'])!!}
+			{!! Form::select('kecamatan',isset($data)?$ModelKecamatan->lists('title','id'):[],null,['class'=>'form-control chain','data-next-chain'=>'kelurahan_id',(isset($data) ? 'readonly':'disabled'),'id'=>'kecamatan'])!!}
 		</div>		
 		<div class="form-group">
 			{!! Form::label('kelurahan_id','Kelurahan')!!}
-			{!! Form::select('kelurahan_id',isset($data)?$ModelKelurahan->lists('title','id'):[],null,['class'=>'form-control','disabled','id'=>'kelurahan_id'])!!}
+			{!! Form::select('kelurahan_id',isset($data)?$ModelKelurahan->lists('title','id'):[],null,['class'=>'form-control',(isset($data) ? 'readonly':'disabled'),'id'=>'kelurahan_id'])!!}
 		</div>		
 	</div>
 	<div class="col-md-4">
@@ -117,9 +117,9 @@
 					<div class="input-group-btn">
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 							<span class="btn btn-default btn-file">
+								{!! Form::file('file_akte') !!}
 								<span class="fileinput-new">Pilih file</span>
 								<span class="fileinput-exists">Ganti file</span>
-								{!! Form::file('file_akte') !!}
 							</span>
 						</div>
 					</div>
@@ -138,9 +138,9 @@
 					<div class="input-group-btn">
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 							<span class="btn btn-default btn-file">
+								{!! Form::file('file_berita') !!}
 								<span class="fileinput-new">Pilih file</span>
 								<span class="fileinput-exists">Ganti file</span>
-								{!! Form::file('file_berita') !!}
 							</span>
 						</div>
 					</div>
@@ -160,9 +160,9 @@
 					<div class="input-group-btn">
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 							<span class="btn btn-default btn-file">
+								{!! Form::file('file_pengesahan') !!}
 								<span class="fileinput-new">Pilih file</span>
 								<span class="fileinput-exists">Ganti file</span>
-								{!! Form::file('file_pengesahan') !!}
 							</span>
 						</div>
 					</div>
@@ -180,34 +180,3 @@
 			{!! Form::text('npwp',null,['class'=>'form-control','id'=>'npwp'])!!}
 	</div>			
 </div>
-
-<script type="text/javascript">
-	(function () {
-
-		$(document).on('change','select.chain',function (e) {
-			var _this = $(e.target),
-				target = $('select[name="'+_this.data('next-chain')+'"]'),
-				url = 'api/'+_this.attr('name')+'/'+_this.val();
-				console.log(target);
-			$.ajax({
-				url: url,
-				type: 'GET',
-				dataType: 'json',
-				beforeSend:function(){
-					target.html('');
-					target.attr('disabled','disabled');
-				},
-				success:function (data) {
-					if(!$.isEmptyObject(data)){
-						target.removeAttr('disabled');
-						$.each(data, function(index, val) {
-							var option = $('<option>');
-							 option.text(val).val(index);
-							 target.append(option);
-						});
-					}
-				}
-			})			
-		})
-	})(jQuery); 
-</script>

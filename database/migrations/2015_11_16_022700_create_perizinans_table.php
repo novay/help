@@ -32,6 +32,6 @@ class CreatePerizinansTable extends Migration
      */
     public function down()
     {
-        Schema::drop('izins');
+        Schema::drop('perizinans');
     }
 }

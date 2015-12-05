@@ -2,95 +2,150 @@
 
 namespace App\Providers\Contracts\UploadHelper;
 
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Session;
+use BadMethodCallException;
 use Config;
+use Illuminate\Support\ViewErrorBag;
+use Illuminate\Support\MessageBag;
+use Session;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Repositories\RepositorieInterface;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UploadHelper 
 {
-    private $path;
-    private $file;
-    private $fileName;
-    private $size;
-    private $update;
+	private $path;
+	private $filename;
+	private $size;
+	private $countError;
+	private $files = [];
+	private $update;
+	private $model;
 
-    use AcceptableTrait;
+	function __construct($size=1028) {
+		$this->size = $size;
+		$this->countError = 0;
+	}
+	public function setSize($size)
+	{
+		$this->size = $size;
+	}
+	public function setPath($path)
+	{
+		$this->path = $path;
+	}
+	public function setUpdate($value)
+	{
+		if(! is_bool($value))	
+		throw new BadMethodCallException("Argument in method UploadHelper::setUpdate must be boolean ");	
+		$this->update = $value;
+	}
+	public function get($field)
+	{
+		if(!isset($this->files[$field])) return null;
+		return $this->files[$field];
+	}
+	public function run($fields,RepositorieInterface $model,FormRequest $r)
+	{
+		$this->setModel($model);
+		if(!is_array($fields))
+			throw new BadMethodCallException("Argument fields in method UploadHelper::run must array");
+		foreach ($fields as $field) {
+			$files[$field] = $r->file($field);
+		}
+		if($this->validate($files)){
+			foreach ($files as $field => $file) {
+				if(!is_null($file)){
+					$name_file = $this->generateName($field,$file);
+					$this->registerFile($field,$this->upload($file,$name_file));
+				}else{
+					$this->registerFile($file,$this->generateName($field));
+				}
+			}
+			return true;
+		}
+		return false;
 
-    function __construct($size=1028) {
-           $this->size = $size;
-           $this->rules = Config::get('uploadHelper.validateFile');
-    }
-    public function setFile($file,$update = false)
-    {
-        if($file instanceof UploadedFile){
-            $this->file = $file;
-            return true;
-        }
-        if($this->update || $update === true){
-            return true;
-        }
-        self::makeError("Tidak ada file yang di dikirim");    
-        return false;
-    }
-    public function isUpdate()
-    {
-        $this->update = true;
-    }
-    public function setSize($size)
-    {
-         $this->size = $size;
-    }
-    public function setPath($path)
-    {
-        $this->path = $path;
-    }
-    public function fileNameGenerate()
-    {
-        $this->fileName = md5(date('Y-mm-dd : h:i:s')).uniqid().".{$this->file->guessExtension()}";
-    }
-    public function getFileName()
-    {
-        return $this->fileName;
-    }
-    private function getHumanFileSize($bytes, $decimals = 2)
-    {
-       $size = ['B', 'kB', 'MB', 'GB', 'TB', 'PB'];
-       $factor = floor((strlen($bytes) - 1) / 3);
+	}
+	public function setModel($model)
+	{
+		$this->model = $model;
+	}
+	private function registerFile($field,$nameFile)
+	{
 
-       return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) .
-       @$size[$factor];
-    }
-    public function checkFile()
-    {
-        if($this->update && is_null($this->file) ){
-            return true;
-        }
-        if (!$this->file->isValid()) {
-            self::makeError("File tidak bisa diterima");
-            return false;
-        }
-        
-        if(!$this->validateWithRule()){
-            return false;
-        }
-        if(!($this->file->getSize()/100) >= $this->size){
-            $this->error['message'][]= "File tidak melewati batas 1MB";
-            self::makeError("File tidak melewati batas " . $this->getHumanFileSize($this->size));
-            return false;
-        }
-        return true;
-        
-    }
-    private function makeError($error)
-    {
-        $errors = Session::has('errors') ?  Session::get('errors') : [];
-        $errors[] = $error;
-        Session::flash('errors',$errors);
+		$this->files[$field] = $nameFile;
+	}
+	private function isUpdate()
+	{
+		return $this->update;
+	}
+	
+	private function getFilePath($name)
+	{
+		return "{$this->path}/$name";
+	}
+	private function isExist($name)
+	{
+		if($name !== ''){
+			
+			return (new Filesystem)->exists($this->getFilePath($name));
+		}
+		return false;
+	}
+	private function randName($file)
+	{
+		return str_random(40).".{$file->guessExtension()}";	
+	}
+	private function generateName($field,$file=null)
+	{
+		$newName = null;
+		$nameModel = $this->model->{$field};
+		if($nameModel == '' || is_null($nameModel)){
+			if(! is_null($file)){
+				$newName = $this->randName($file);
+			}
+		}
+		else if( !is_null($file)){
+			$newName = $this->isExist($nameModel) ? $nameModel : $this->randName($file);
+		}else{
+			$newName = $nameModel;
+		}
+		return $newName;
+	}
+	private function hasError()
+	{
+		$e = function (){
+			$_e = $this->countError;
+			$this->countError = 0;
+			return $_e;
+		};
+		if($e() >= 1){
+			return true;
+		}
+		return false;
+	}
+	private function makeError($error,$key='default')
+	{
+		$this->countError++;
+		Session::flash('errors',Session::get('errors',new ViewErrorBag)->add($key,$error));
 
-    }
-    public function upload()
-    {
-        self::fileNameGenerate();
-        return $this->file->move($this->path,$this->fileName);
-    }
+	}
+	private function validate($files)
+	{
+		if(!is_array($files)) throw new BadMethodCallException("Argument files in method UploadHelper::validate must array");
+		foreach ($files as $field => $file) {
+			if(! is_null($file) ){
+				if(!$file->isValid()) $this->makeError("File pada Bidang isian $field tidak valid");
+			}else{
+				$this->makeError("File pada Bidang isian $field wajib di isi");
+			}
+		}
+		return $this->hasError();
+	}
+	private function upload($file,$name)
+	{	
+		$file->move($this->path,$name);
+		return $name;
+	}
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class PerbaruiTableSekolah extends Migration
+class UpdateTableYayasan extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,11 @@ class PerbaruiTableSekolah extends Migration
      */
     public function up()
     {
-        Schema::table('sekolahs', function (Blueprint $table) {
-            $table->string('title');
+        Schema::table('yayasans', function($table) {
+            $table->string('file_akte',50)->change();
+            $table->string('file_pengesahan',50)->change();
+            $table->string('file_berita',50)->change();
+            $table->string('file_logo',50)->change();
         });
     }
 
@@ -24,8 +27,6 @@ class PerbaruiTableSekolah extends Migration
      */
     public function down()
     {
-        Schema::table('sekolahs', function (Blueprint $table) {
-            $table->dropColumn('title');
-        });
+        //
     }
 }

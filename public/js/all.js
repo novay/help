@@ -29199,6 +29199,32 @@ if(b=c.data(a[0],"data"),null!=b)return b;if(a.is("option"))b={id:a.val(),text:a
 					}
 				});			
 	      });
+		$(document).on('change','select.chain',function (e) {
+			var _this = $(e.target),
+			target = $('select[name="'+_this.data('next-chain')+'"]'),
+			name = _this.attr('name').replace('_id',''),
+			url = '/admin/api/'+name+'/'+_this.val();
+			$.ajax({
+				url: url,
+				type: 'GET',
+				dataType: 'json',
+				beforeSend:function(){
+					target.html('');
+					target.attr('disabled','disabled');
+				},
+				success:function (data) {
+					if(!$.isEmptyObject(data)){
+						target.removeAttr('disabled');
+						target.removeAttr('readonly');
+						$.each(data, function(index, val) {
+							var option = $('<option>');
+							option.text(val).val(index);
+							target.append(option);
+						});
+					}
+				}
+			})
+		})
 	__bootsrapingAllFunction();
 })(jQuery);
 function __bootsrapingAllFunction() {

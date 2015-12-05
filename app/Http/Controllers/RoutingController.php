@@ -1,4 +1,8 @@
 <?php namespace App\Http\Controllers;
+use Illuminate\Support\MessageBag;
+use Illuminate\Contracts\Support\MessageProvider;
+use Session;
+use Illuminate\Support\ViewErrorBag;
 trait RoutingController{
 	/**
 	 * make route to index of module
@@ -50,10 +54,18 @@ trait RoutingController{
      */
     public function routeBackWithError($from = __METHOD__)
     {
-        $errors = \Session::has('errors') ? \Session::get('errors') : [];
-        $errors[] = "{$this->moduleName} gagal ".$this->routeMessage($from);
+        $message = "{$this->moduleName} gagal ";
+        $message.= $this->routeMessage($from);
+        $e = Session::get('errors',new MessageBag);
+        if($e instanceof MessageProvider){
+            $e = $e->getMessageBag()->add($from,$message);
+        }else{
+             $e = MessageBag((array) $e);
+        }
+        Session::forget('errors');
+        $errors = $e->all();
         return \Request::ajax() ?
             \Response::json(compact('errors'),422):
-            redirect()->back()->withInput()->withErrors([$message]);
+            redirect()->back()->withInput()->withErrors($e);
     }
 }

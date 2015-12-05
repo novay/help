@@ -13,10 +13,21 @@ class YayasanRequest extends Request
      */
     public function authorize()
     {
-        dd(Route::currentRouteName());
-        if(is_null($this->input('provinsi'))){
-            return false;
+        if(strtolower($this->method()) != 'patch'){
+            if(is_null($this->input('provinsi'))){
+                return false;
+            }else{
+                return $this->valid();
+            }
+        }else{
+           if(is_null($this->input('provinsi')) or '--Pilih salah satu--' == $this->input('provinsi')){
+                return true;
+            }
         }
+        return $this->valid();
+    }
+    private function valid()
+    {
         $p = $this->input('provinsi');
         $kb = $this->input('kabupaten');
         $kc = $this->input('kecamatan');
@@ -24,7 +35,6 @@ class YayasanRequest extends Request
         $provinsiModel = $this->getRepo('provinsi');
         return $provinsiModel->validationRequest($p,$kb,$kc,$kl);
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -36,18 +46,18 @@ class YayasanRequest extends Request
             'nama'=>'required|min:3|max:50',
             'pimpinan'=>'required|min:3|max:50',
             'alamat'=>'required|min:3|max:50',
-            'provinsi'=>'required|digits:2',
-            'kabupaten'=>'required|digits:4',
-            'kecamatan'=>'required|digits:7',
+            // 'provinsi'=>'digits:2',
+            // 'kabupaten'=>'digits:4',
+            // 'kecamatan'=>'digits:7',
             'kelurahan_id'=>'required|digits:10',
             'kode_pos'=>'required|digits:5',
             'rt'=>'required|digits_between:2,3',
             'rw'=>'required|digits_between:2,3',
             // 'dusun'=>'required|min:3|max:50',
-            'file_logo'=>'required|max:500',
-            'file_akte'=>'required|max:500',
-            'file_berita'=>'required|max:500',
-            'file_pengesahan'=>'required|max:500',
+            'file_logo'=>'max:500| mimes:jpeg,bmp,png,jpg',
+            'file_akte'=>'max:500| mimes:jpeg,bmp,png,jpg',
+            'file_berita'=>'max:500| mimes:jpeg,bmp,png,jpg',
+            'file_pengesahan'=>'max:500| mimes:jpeg,bmp,png,jpg',
             'lintang'=>'required',
             'bujur'=>'required',
             'no_telp'=>'required|between:10,14',

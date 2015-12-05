@@ -17,7 +17,7 @@ class UploadHelperServiceProvide extends ServiceProvider
     {
         App::bind('UploadHelper',function ()
         {
-            return new App\Providers\Contracts\UploadHelper\UploadHelper;
+            return $this->app['App\Providers\Contracts\UploadHelper\UploadHelper'];
         });
 
         // App::alias('UploadHelper',\Providers\UploadHelper::class);

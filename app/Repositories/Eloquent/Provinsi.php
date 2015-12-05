@@ -16,8 +16,8 @@ class Provinsi extends Model implements RepositorieInterface
 		}
 		public function lists($title,$key)
 		{
-			$o[] = "--Pilih salah satu--";
-			return array_merge_recursive($o , parent::lists($title,$key)->toArray());
+			$o[0] ="--Pilih salah satu--";
+			return $o+parent::lists($title,$key)->toArray();
 		}
 		/**
 		 * validation region from provinsi,kabupaten, kecamatan and kelurahan

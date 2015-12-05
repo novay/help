@@ -5,7 +5,7 @@ use App\Repositories\RepositorieInterface;
 
 class Kelurahan extends Model implements RepositorieInterface
 {
-		protected $fillable = ['id','kecamatan_id','title'];
+		protected $fillable = ['id','title'];
 		public function kecamatan()
 		{
 			return $this->belongsTo(Kecamatan::class);

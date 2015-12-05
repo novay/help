@@ -9,6 +9,7 @@ trait ControllerPatch{
 	private $repo;
 	private $request;
 	private $ajax = false;
+	private $validation;
 
 	function __construct(RepositorieInterface $repo, $nameReq) {
 		$this->repo = $repo;
