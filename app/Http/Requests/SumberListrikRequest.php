@@ -13,7 +13,7 @@ class SumberListrikRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class SumberListrikRequest extends Request
     public function rules()
     {
         return [
-            //
+            'title'=>'required|min:3|max:50'
+        ];
+    }
+    public function aliases()
+    {
+        return [
+            'title'=>'Sumber Listrik'
         ];
     }
 }

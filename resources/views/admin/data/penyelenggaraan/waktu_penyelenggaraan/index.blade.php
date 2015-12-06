@@ -17,9 +17,7 @@
 						<thead>
 							<tr>
 								<th class="col-xs-1">No.</th>
-								<th>Sekolah</th>
-								<th>Tahun Ajaran</th>
-								<th>Semester</th>
+								<th>Waktu Penyelenggaraan</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -27,10 +25,8 @@
 							@foreach ($lists as $list)
 								<tr>
 									<td>{{$x++}}</td>
-									<td>{{$list->sekolah->title}}</td>
-									<td>{{$list->tahun_ajaran->title}}</td>
 									<td>
-										<span>{{$list->semester->title}}</span>	
+										<span>{{$list->title}}</span>	
 										<div class="pull-right">
 											  {!! Form::open(['route'=>[$destroy,$list->id], 'method'=>'DELETE','class'=>'no-margin form-ajax']) !!}
 											  		<div class="btn-group">
@@ -39,6 +35,7 @@
 													  	<button class="btn btn-danger btn-flat btn-sm" type="submit"><i class="fa fa-eraser"></i> Hapus</button>
 											  		</div>
 											  {!! Form::close() !!}
+
 										</div>
 									</td>
 								</tr>

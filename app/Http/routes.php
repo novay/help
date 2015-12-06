@@ -79,7 +79,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function ()
 			Route::resources([
 				'semester'=>'SemesterController',
 				'tahun_ajaran'=>'TahunAjaranController',
-				'waktu_penyelenggaraan'=>'WaktuPenyelengaraanController',
+				'waktu_penyelenggaraan'=>'WaktuPenyelenggaraanController',
 				]);
 		});
 	});

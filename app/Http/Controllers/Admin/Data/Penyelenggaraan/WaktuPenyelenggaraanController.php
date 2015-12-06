@@ -4,21 +4,20 @@ namespace App\Http\Controllers\Admin\Data\Penyelenggaraan;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\RepositorieInterface;
+use App\Http\Requests\WaktuPenyelenggaraanRequest;
 
-use App\Http\Requests\WaktuPenyelengaraanRequest;
-
-class WaktuPenyelengaraanController extends Controller
+class WaktuPenyelenggaraanController extends Controller
 {
      function __construct(RepositorieInterface $repo) {
-     	parent::__construct($repo,'WaktuPenyelengaraanRequest');
+     	parent::__construct($repo,'WaktuPenyelenggaraanRequest');
      }
      /**
       * code for create and update data in data store
       * @param RepositorieInterface $model 
-      * @param WaktuPenyelengaraanRequest         $r     RequestHandler
+      * @param WaktuPenyelenggaraanRequest         $r     RequestHandler
       * @param string               $from  store|update
       */
-     public function CreateOrUpdate(RepositorieInterface $model, WaktuPenyelengaraanRequest $r, $from)
+     public function CreateOrUpdate(RepositorieInterface $model, WaktuPenyelenggaraanRequest $r, $from)
      {
         return $model->fill($r->all())->save() ? $this->routeAndSuccess($from) : $this->routeBackWithError($form);
      }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class AksesInternetRequest extends Request
+class WaktuPenyelenggaraanRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,12 @@ class AksesInternetRequest extends Request
     public function rules()
     {
         return [
-            'title'=> 'required|min:3|max:50'
+            'title'=>'min:3|max:50|required'
         ];
     }
     public function attributes()
     {
-        return [
-            'title'=>'Akses Internet'
-        ];
+        return ['title'=>'Waktu Penyelenggaraan'];
     }
 }
+

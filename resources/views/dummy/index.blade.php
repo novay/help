@@ -35,7 +35,6 @@
 													  	<button class="btn btn-danger btn-flat btn-sm" type="submit"><i class="fa fa-eraser"></i> Hapus</button>
 											  		</div>
 											  {!! Form::close() !!}
-
 										</div>
 									</td>
 								</tr>

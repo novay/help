@@ -20,7 +20,11 @@ class PeriodikController extends Controller
       */
      public function CreateOrUpdate(RepositorieInterface $model, PeriodikRequest $r, $from)
      {
-        return $model->fill($r->all())->save() ? $this->routeAndSuccess($from) : $this->routeBackWithError($form);
+        $data = $r->except('akses_internet','_token');
+        if($periodik = $model->fill($data)->save()){
+          return $model->where($data)->orderBy('updated_at')->get()->first()->akses_internet()->sync($r->input('akses_internet'))?$this->routeAndSuccess($from) : $this->routeBackWithError($form);
+        }
+        else return $this->routeBackWithError($form);
      }
      /**   
       *delete data in data store

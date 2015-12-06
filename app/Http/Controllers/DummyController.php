@@ -1,25 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Data\Tambahan;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\RepositorieInterface;
 
-use App\Http\Requests\AksesInternetRequest;
+use App\Http\Requests\DummyRequest;
 
-class AksesInternetController extends Controller
+class DummyController extends Controller
 {
-     protected $prefix = 'admin.data.tambahan.akses_inet'; 
      function __construct(RepositorieInterface $repo) {
-     	parent::__construct($repo,'AksesInternetRequest');
+     	parent::__construct($repo,'DummyRequest');
      }
      /**
       * code for create and update data in data store
       * @param RepositorieInterface $model 
-      * @param AksesInternetRequest         $r     RequestHandler
+      * @param DummyRequest         $r     RequestHandler
       * @param string               $from  store|update
       */
-     public function CreateOrUpdate(RepositorieInterface $model, AksesInternetRequest $r, $from)
+     public function CreateOrUpdate(RepositorieInterface $model, DummyRequest $r, $from)
      {
         return $model->fill($r->all())->save() ? $this->routeAndSuccess($from) : $this->routeBackWithError($form);
      }

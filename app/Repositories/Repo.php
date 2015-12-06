@@ -17,7 +17,7 @@ RepoBind::bind('Admin\Data\Region\KabupatenController','Kabupaten','kabupaten');
 RepoBind::bind('Admin\Data\Region\KecamatanController','Kecamatan','kecamatan');
 RepoBind::bind('Admin\Data\Region\KelurahanController','Kelurahan','kelurahan');
 RepoBind::bind('Admin\Data\Region\KategoriWilayahController','KategoriWilayah','kategori_wilayah');
-RepoBind::bind('Admin\Data\Penyelenggaraan\WaktuPenyelengaraanController','WaktuPenyelengaraan','waktu_penyelenggaraan');
+RepoBind::bind('Admin\Data\Penyelenggaraan\WaktuPenyelenggaraanController','WaktuPenyelengaraan','waktu_penyelenggaraan');
 RepoBind::bind('Admin\Data\Penyelenggaraan\TahunAjaranController','TahunAjaran','tahun_ajaran');
 RepoBind::bind('Admin\Data\Penyelenggaraan\SemesterController','Semester','semester');
 RepoBind::bind('Admin\YayasanController','Yayasan','yayasan');
