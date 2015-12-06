@@ -13,7 +13,7 @@
 		{!! Form::text('title',null,['class'=>'form-control','id'=>'title']) !!}
 	</div>
 </div>
-@if (Request::ajax())
+{{-- @if (Request::ajax())
 	<script id="appendScript">
 		(function () {
 			var readOnlyLength;
@@ -35,23 +35,23 @@
 	</script>
 @endif
 @section('javascript')
-	<script id="appendScript">
-		(function () {
-			var readOnlyLength;
-				$(document).on('change', '#provinsi_id', function(e) {
-					var val = $(e.target).val();
-					if(val != "--Pilih salah satu--") $('#id').val(val);
-					readOnlyLength = $('#id').val().length;
-				});
-				$(document).on('keypress, keydown','#id', function(event) {
-					var $field = $(this);
-					$('#output').text(event.which + '-' + this.selectionStart);
-					if ((event.which != 37 && (event.which != 39))
-						&& ((this.selectionStart < readOnlyLength)
-							|| ((this.selectionStart == readOnlyLength) && (event.which == 8)))) {
-						return false;
-				}
-			});
-		})(jQuery); 
-	</script>
-@stop
+	// <script id="appendScript">
+	// 	(function () {
+	// 		var readOnlyLength;
+	// 			$(document).on('change', '#provinsi_id', function(e) {
+	// 				var val = $(e.target).val();
+	// 				if(val != "--Pilih salah satu--") $('#id').val(val);
+	// 				readOnlyLength = $('#id').val().length;
+	// 			});
+	// 			$(document).on('keypress, keydown','#id', function(event) {
+	// 				var $field = $(this);
+	// 				$('#output').text(event.which + '-' + this.selectionStart);
+	// 				if ((event.which != 37 && (event.which != 39))
+	// 					&& ((this.selectionStart < readOnlyLength)
+	// 						|| ((this.selectionStart == readOnlyLength) && (event.which == 8)))) {
+	// 					return false;
+	// 			}
+	// 		});
+	// 	})(jQuery); 
+	// </script>
+@stop --}}

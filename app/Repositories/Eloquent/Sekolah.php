@@ -18,4 +18,10 @@ class Sekolah extends Model implements RepositorieInterface
 		{
 			return $this->belongsTo(StatusKepemilikan::class);
 		}
+		public function lists($title,$key)
+		{
+			$o[0] ="--Pilih salah satu--";
+			return $o+parent::lists($title,$key)->toArray();
+		}
+
 }

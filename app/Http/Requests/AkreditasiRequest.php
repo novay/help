@@ -24,7 +24,13 @@ class AkreditasiRequest extends Request
     public function rules()
     {
         return [
-            //
+            'sekolah_id'=>'required',
+            'no_sk'=>'required',
+            'nilai_id'=>'required',
+            'tmt'=>'required|date',
+            'tanggal'=>'required|date',
+            'lembaga_id'=>'required',
+            'file'=>'required|max:500|mimes:jpg,png,bmp,gif,jpeg'
         ];
     }
 }

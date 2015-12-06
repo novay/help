@@ -28,8 +28,11 @@
 							@foreach ($lists as $list)
 								<tr>
 									<td>{{$x++}}</td>
+									<td>{{$list->sekolah->title}}</td>
+									<td>{{$list->lembaga->title}}</td>
+									<td>{{$list->nilai->title}}</td>
 									<td>
-										<span>list item</span>	
+										<span>{{$list->tanggal}}</span>	
 										<div class="pull-right">
 											  {!! Form::open(['route'=>[$destroy,$list->id], 'method'=>'DELETE','class'=>'no-margin form-ajax']) !!}
 											  		<div class="btn-group">

@@ -54,7 +54,11 @@
 	<div class="col-md-4">
 		<div class="col-xs-12">
 			<div class="fileinput fileinput-new " data-provides="fileinput">
-				<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+				<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+					@if($data)
+						<img src="{{url('img/yayasan/'.$data->file_logo)}}" alt="">
+					@endif
+				</div>
 				<div>
 					<span class="btn btn-default btn-file"><span class="fileinput-new">Pilih Logo</span><span class="fileinput-exists">Change</span>{!! Form::file('file_logo')!!}</span>
 					<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>

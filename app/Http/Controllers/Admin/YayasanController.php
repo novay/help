@@ -26,7 +26,7 @@ class YayasanController extends Controller
         $data = $r->except('provinsi','kabupaten','kecamatan','file_logo','file_berita','file_pengesahan','file_akte');
         $field = ['file_logo','file_berita','file_pengesahan','file_akte'];
         UploadHelper::setUpdate($from == 'update');
-        if (! UploadHelper::run($field,$model,$r)){
+        if (!UploadHelper::run($field,$model,$r)){
             return $this->routeBackWithError($from);
         }
         $data['file_logo'] =  UploadHelper::get('file_logo');

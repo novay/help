@@ -59,7 +59,7 @@ class UploadHelper
 					$name_file = $this->generateName($field,$file);
 					$this->registerFile($field,$this->upload($file,$name_file));
 				}else{
-					$this->registerFile($file,$this->generateName($field));
+					$this->registerFile($field,$this->generateName($field));
 				}
 			}
 			return true;
@@ -69,7 +69,11 @@ class UploadHelper
 	}
 	public function setModel($model)
 	{
-		$this->model = $model;
+		if(! is_null($model))
+			$this->model = $model;
+		else if($this->isUpdate())
+			throw new BadMethodCallException("Model must be set");
+		
 	}
 	private function registerFile($field,$nameFile)
 	{
@@ -136,12 +140,14 @@ class UploadHelper
 		if(!is_array($files)) throw new BadMethodCallException("Argument files in method UploadHelper::validate must array");
 		foreach ($files as $field => $file) {
 			if(! is_null($file) ){
-				if(!$file->isValid()) $this->makeError("File pada Bidang isian $field tidak valid");
+				if(!$file->isValid())
+					$this->makeError("File pada Bidang isian $field tidak valid");
 			}else{
+				if(! $this->isUpdate())
 				$this->makeError("File pada Bidang isian $field wajib di isi");
 			}
 		}
-		return $this->hasError();
+		return !$this->hasError();
 	}
 	private function upload($file,$name)
 	{	

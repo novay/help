@@ -22,20 +22,14 @@ class AkreditasiController extends Controller
       */
      public function CreateOrUpdate(RepositorieInterface $model, AkreditasiRequest $r, $from)
      {
-      if($from == 'update'){
-        $this->upload->isUpdate();
-      }
-        UploadHelper::allowedFileType('image');
-        if(UploadHelper::setFile($r->file('file'))){
-          if(UploadHelper::checkFile()){
-            if(UploadHelper::upload()){
-              $data = $r->all();
-              $data['file'] = UploadHelper::getFileName();
-              return $model->fill($data)->save() ? $this->routeAndSuccess($from) : $this->routeBackWithError($from);
-            }
-          }
+        $data = $r->except('file');
+        $field = ['file'];
+        UploadHelper::setUpdate($from == 'update');
+        if (!UploadHelper::run($field,$model,$r)){
+            return $this->routeBackWithError($from);
         }
-       return $this->routeBackWithError($from);  
+        $data['file'] =  UploadHelper::get('file');
+        return $model->fill($data)->save() ? $this->routeAndSuccess($from) : $this->routeBackWithError($from); 
      }
      /**   
       *delete data in data store

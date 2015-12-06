@@ -23,4 +23,9 @@ class Yayasan extends Model implements RepositorieInterface
 		{
 			return $this->belongsTo(Kelurahan::class);
 		}
+		public function lists($title,$key)
+		{
+			$o[0] ="--Pilih salah satu--";
+			return $o+parent::lists($title,$key)->toArray();
+		}
 }
